@@ -18,7 +18,8 @@ if not status_ok then
 end
 
 lazy.setup({
---[[irequire('core.plugins.theme'),
+  require('plugins.oil'),
+  --[[irequire('core.plugins.theme'),
   require('core.plugins.lualine'),
 
   require('core.plugins.treesitter'),
