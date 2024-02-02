@@ -2,6 +2,19 @@
 vim.opt.fileencoding = 'utf-8'
 vim.opt.spelllang = 'en'
 
+-- Sync clipboard between OS and Neovim.
+vim.o.clipboard = 'unnamedplus'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
 -- line handling
 vim.opt.number = true
 vim.opt.relativenumber = true

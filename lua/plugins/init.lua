@@ -18,7 +18,10 @@ if not status_ok then
 end
 
 lazy.setup({
+  require('plugins.theme'),
   require('plugins.oil'),
+  require('plugins.lualine'),
+  require('plugins.barbecue'),
   --[[irequire('core.plugins.theme'),
   require('core.plugins.lualine'),
 
