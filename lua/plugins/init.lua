@@ -1,4 +1,4 @@
-ocal lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   -- clone lazy if not already exists
   vim.fn.system({
