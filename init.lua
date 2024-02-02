@@ -1,3 +1,3 @@
-require('core.options')
-require('core.mappings')
-require('core.plugins')
+require('options')
+require('mappings')
+require('plugins')
