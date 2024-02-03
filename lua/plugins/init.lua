@@ -19,31 +19,22 @@ end
 
 lazy.setup({
   require('plugins.theme'),
-  require('plugins.oil'),
   require('plugins.lualine'),
+
+  require('plugins.treesitter'),
+  require('plugins.snippets'),
+  require('plugins.whichkey'),
+
+  require('plugins.telescope'),
+  require('plugins.oil'),
   require('plugins.barbecue'),
-  --[[irequire('core.plugins.theme'),
-  require('core.plugins.lualine'),
+  require('plugins.git'),
+--  require('plugins.cmp'),
+--  require('plugins.harpoon'),
+  require('plugins.cursor'),
+  require('plugins.undotree'),
+--  require('plugins.tmux'),
 
-  require('core.plugins.treesitter'),
-  require('core.plugins.snippets'),
-  require('core.plugins.lsp'),
-  require('core.plugins.cmp'),
-
-  require('core.plugins.telescope'),
-  require('core.plugins.explorer'),
-
-  require('core.plugins.ai'),
-  require('core.plugins.comments'),
-  require('core.plugins.dadbod'),
-  require('core.plugins.git'),
-  require('core.plugins.productivity'),
-  require('core.plugins.tmux'),
-  require('core.plugins.undotree'),
-  
-  require('core.plugins.projects.knowledgebase'),
-  require('core.plugins.projects.latex'),
---]]
 }, {
   defaults = { lazy = true, },
 })
