@@ -24,7 +24,7 @@ lazy.setup({
   require('plugins.whichkey'),
   require('plugins.treesitter'),
 
-  require('plugins.cursor'),
+--  require('plugins.cursor'),
 
 --[[
   require('plugins.snippets'),
