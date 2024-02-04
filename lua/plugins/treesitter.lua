@@ -27,10 +27,7 @@ return {
         end,
       },
 
-      playground = {
-        enable = true,
-      },
-    },
+   },
   },
 
   {
@@ -39,13 +36,5 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
-  },
-
-  {
-    'nvim-treesitter/playground',
-    cmd = 'TSPlaygroundToggle',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    }
   },
 }

@@ -22,8 +22,10 @@ lazy.setup({
   require('plugins.lualine'),
   require('plugins.oil'),
   require('plugins.whichkey'),
-
   require('plugins.treesitter'),
+
+  require('plugins.cursor'),
+
 --[[
   require('plugins.snippets'),
   require('plugins.lsp'),
@@ -32,7 +34,6 @@ lazy.setup({
   require('plugins.barbecue'),
   require('plugins.telescope'),
   require('plugins.git'),
-  require('plugins.cursor'),
   require('plugins.undotree'),
 --]]
 
