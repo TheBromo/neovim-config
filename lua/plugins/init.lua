@@ -20,23 +20,39 @@ end
 lazy.setup({
   require('plugins.theme'),
   require('plugins.lualine'),
-  require('plugins.oil'),
   require('plugins.whichkey'),
+  
   require('plugins.treesitter'),
-
---  require('plugins.cursor'),
-
---[[
   require('plugins.snippets'),
   require('plugins.lsp'),
   require('plugins.cmp'),
 
+
+  require('plugins.oil'),
   require('plugins.barbecue'),
-  require('plugins.telescope'),
+  require('plugins.cursor'),
   require('plugins.git'),
+  --[[
+  require('plugins.snippets'),
+  require('plugins.lsp'),
+  require('plugins.cmp'),
+
+  require('plugins.telescope'),
   require('plugins.undotree'),
 --]]
 
   }, {
   defaults = { lazy = true, },
 })
+
+local wk = require("which-key")
+
+wk.register({
+  x = {
+    name = "+trouble", -- Group name
+    x = "Toggle Trouble",
+    w = "Workspace Diagnostics",
+    d = "Document Diagnostics",
+  },
+}, { prefix = "<leader>" })
+

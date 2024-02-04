@@ -1,4 +1,6 @@
 return {
+  event = "BufEnter";
+
   "utilyre/barbecue.nvim",
   name = "barbecue",
   version = "*",
@@ -7,6 +9,5 @@ return {
     "nvim-tree/nvim-web-devicons", -- optional dependency
   },
   opts = {
-    -- configurations go here
   },
 }

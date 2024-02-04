@@ -1,4 +1,5 @@
---[[local autocmd = vim.api.nvim_create_autocmd
+--[[
+local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ 'ModeChanged' }, {
   callback = function()
@@ -21,18 +22,17 @@ autocmd({ 'ModeChanged' }, {
     end
   end,
 })
-
+--]]
 return {
-  "karb94/neoscroll.nvim",
+  enabled = false;
+
   event = 'BufEnter',
-  config = function ()
-    require('neoscroll').setup {}
-  end
+ 
   'gen740/SmoothCursor.nvim',
   config = function() 
     require('smoothcursor').setup{
       cursor = '>',
     }
     
-  end--]]
-return {}
+  end
+}
