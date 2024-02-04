@@ -19,8 +19,8 @@ end
 
 lazy.setup({
   require('plugins.theme'),
-  --require('plugins.lualine'),
-  require('plugins.whichkey'),
+  require('plugins.lualine'),
+  --[[require('plugins.whichkey'),
   
   require('plugins.treesitter'),
   require('plugins.snippets'),
@@ -33,6 +33,8 @@ lazy.setup({
   require('plugins.git'),
   require('plugins.cursor'),
   require('plugins.undotree'),
-}, {
+--]]
+
+  }, {
   defaults = { lazy = true, },
 })

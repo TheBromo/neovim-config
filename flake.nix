@@ -32,7 +32,9 @@
               pkgs.gcc
               pkgs.gnumake
               pkgs.cmake
-
+              
+              pkgs.cargo
+              pkgs.rustc
               # required for fuzzy finding in telescope
               pkgs.fd
               pkgs.ripgrep
