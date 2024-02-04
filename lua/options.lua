@@ -56,4 +56,4 @@ vim.opt.listchars = {
 vim.opt.updatetime = 300
 
 -- extend comment when hitting ENTER in insert mode
-vim.opt.formatoptions:append('r')
+--vim.opt.formatoptions:append('r')

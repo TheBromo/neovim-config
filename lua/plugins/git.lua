@@ -1,7 +1,7 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
-    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
+   -- event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
 
     opts = {
       signcolumn = true,
@@ -13,4 +13,5 @@ return {
     'tpope/vim-fugitive',
     cmd = { 'Git' },
   },
+  'tpope/vim-sleuth',
 }

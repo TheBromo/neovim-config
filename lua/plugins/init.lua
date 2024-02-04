@@ -19,22 +19,20 @@ end
 
 lazy.setup({
   require('plugins.theme'),
-  require('plugins.lualine'),
-
+  --require('plugins.lualine'),
+  require('plugins.whichkey'),
+  
   require('plugins.treesitter'),
   require('plugins.snippets'),
-  require('plugins.whichkey'),
+  require('plugins.lsp'),
+  require('plugins.cmp'),
 
   require('plugins.telescope'),
   require('plugins.oil'),
   require('plugins.barbecue'),
   require('plugins.git'),
---  require('plugins.cmp'),
---  require('plugins.harpoon'),
   require('plugins.cursor'),
   require('plugins.undotree'),
---  require('plugins.tmux'),
-
 }, {
   defaults = { lazy = true, },
 })
