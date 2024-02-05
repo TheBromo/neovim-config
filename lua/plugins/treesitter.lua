@@ -7,11 +7,7 @@ return {
     build = ':TSUpdate',
 
     opts = {
-      ensure_installed = {"lua", "go"},
-      ignore_install = {},
-
-      sync_install = false,
-      auto_install = false,
+      auto_install = true,
 
       highlight = {
         enable = true,
@@ -26,15 +22,6 @@ return {
           return require('utils.file').is_large_buffer(buf)
         end,
       },
-
    },
-  },
-
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    cmd = { 'TSContextEnable', 'TSContextDisable', 'TSContextToggle' },
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
   },
 }
