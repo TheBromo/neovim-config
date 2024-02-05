@@ -7,7 +7,7 @@ return {
     build = ':TSUpdate',
 
     opts = {
-      ensure_installed = {},
+      ensure_installed = {"lua", "go"},
       ignore_install = {},
 
       sync_install = false,
