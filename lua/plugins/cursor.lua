@@ -24,15 +24,14 @@ autocmd({ 'ModeChanged' }, {
 })
 --]]
 return {
-  enabled = false;
+	enabled = false,
 
-  event = 'BufEnter',
- 
-  'gen740/SmoothCursor.nvim',
-  config = function() 
-    require('smoothcursor').setup{
-      cursor = '>',
-    }
-    
-  end
+	event = "BufEnter",
+
+	"gen740/SmoothCursor.nvim",
+	config = function()
+		require("smoothcursor").setup({
+			cursor = ">",
+		})
+	end,
 }
