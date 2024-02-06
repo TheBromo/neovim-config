@@ -9,5 +9,6 @@ return {
     "nvim-tree/nvim-web-devicons", -- optional dependency
   },
   opts = {
+     show_navic = false,
   },
 }
