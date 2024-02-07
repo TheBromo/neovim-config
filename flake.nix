@@ -41,7 +41,7 @@
 
               pkgs.wget
               pkgs.unzip
-              pkgs.node
+              pkgs.nodejs_20
 
               # coq_nvim
               pkgs.python3
