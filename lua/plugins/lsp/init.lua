@@ -16,7 +16,7 @@ local function configure(server, extra)
   if coq_status_ok then
     config = coq.lsp_ensure_capabilities(config)
   end
-  
+
   if extra then
     config = vim.tbl_deep_extend('force', config, extra)
   end
@@ -28,7 +28,7 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
-    dependencies = { 
+    dependencies = {
       'j-hui/fidget.nvim',
       'folke/neoconf.nvim',
     },
@@ -47,8 +47,8 @@ return {
           },
         },
       })
-      configure('lua_ls',{})
-      
+      configure('lua_ls', {})
+
       -- dynamic
       configure('gopls')
     end,

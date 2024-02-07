@@ -4,8 +4,9 @@ return {
   require('plugins.barbecue'),
   require('plugins.treesitter'),
   require('plugins.lsp'),
-  require('plugins.completions'),
+  --require('plugins.completions'),
   require('plugins.snippets'),
+  require('plugins.coq'),
 
   require('plugins.telescope'),
   require('plugins.git'),
