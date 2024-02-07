@@ -16,5 +16,5 @@ return {
   require('plugins.undotree'),
   require('plugins.whichkey'),
   require('plugins.debugging'),
---  require('plugins.autoformat'),
+  require('plugins.autoformat'),
 }

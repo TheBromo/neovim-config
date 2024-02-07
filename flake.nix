@@ -35,6 +35,7 @@
               
               pkgs.cargo
               pkgs.rustc
+            
               # required for fuzzy finding in telescope
               pkgs.fd
               pkgs.ripgrep
