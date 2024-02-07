@@ -35,10 +35,9 @@ return {
     event = 'VeryLazy',
 
     config = function()
-      require('core.plugins.lsp.mappings').setup()
+      require('plugins.lsp.mappings').setup()
 
       -- preinstalled
-      configure('ltex')
       configure('nixd', {
         settings = {
           nixd = {
@@ -50,14 +49,7 @@ return {
       })
       
       -- dynamic
-      configure('texlab')
-      configure('gopls', {
-        settings = {
-          gopls = {
-            ['local'] = 'github.com/thecodinglab', -- TODO: detect current module from `go.mod`
-          },
-        },
-      })
+      configure('gopls')
     end,
   },
 
