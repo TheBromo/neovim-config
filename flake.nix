@@ -38,9 +38,13 @@
               # required for fuzzy finding in telescope
               pkgs.fd
               pkgs.ripgrep
+              
+              # coq_nvim
+              pkgs.python3
+              pkgs.sqlite
 
               # gen.nvim
-              pkgs.ollama
+              #pkgs.ollama
               pkgs.curl
             ];
 
@@ -55,7 +59,7 @@
               extraMakeWrapperArgs = pkgs.lib.escapeShellArgs extraPathArgs;
               configure = {
                 customRC = ''
-                  lua package.path = '${luaConfig}/lua/?.lua;${luaConfig}/lua/?/?.lua;' .. package.path
+                  lua package.path = '${luaConfig}/lua/?.lua;' .. package.path
                   luafile ${luaConfig}/init.lua
                 '';
               };
