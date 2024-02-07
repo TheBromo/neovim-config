@@ -17,7 +17,7 @@ return {
 
   opts = function()
     local cmp = require('cmp')
-    local utils = require('utils')
+    local utils = require('utils.file')
     local devicons = require('nvim-web-devicons')
 
     local icons = {
