@@ -11,9 +11,12 @@ return {
       auto_install = true,
     },
   },
+  { "j-hui/fidget.nvim", opts = {} },
+  "folke/neodev.nvim",
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+
     config = function()
       local on_attach = function(_, bufnr)
         local nmap = function(keys, func, desc)
@@ -57,13 +60,6 @@ return {
       require("mason-lspconfig").setup()
 
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- tsserver = {},
-        -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
@@ -97,8 +93,6 @@ return {
       })
     end,
   },
-  { "j-hui/fidget.nvim", opts = {} },
-  "folke/neodev.nvim",
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
