@@ -41,6 +41,8 @@
 
               pkgs.wget
               pkgs.unzip
+              pkgs.node
+
               # coq_nvim
               pkgs.python3
               pkgs.sqlite
