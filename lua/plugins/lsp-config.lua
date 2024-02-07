@@ -27,7 +27,7 @@ return {
         nmap("<leader>ca", function()
           vim.lsp.buf.code_action({ context = { only = { "quickfix", "refactor", "source" } } })
         end, "[C]ode [A]ction")
-
+        nmap("<leader>cf", function(_)vim.lsp.buf.format()end, "[C]ode [F]ormat")
         nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
         nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
         nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")

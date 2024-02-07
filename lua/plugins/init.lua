@@ -2,9 +2,9 @@ return {
   require('plugins.colorscheme'),
   require('plugins.lualine'),
   require('plugins.barbecue'),
+  require('plugins.treesitter'),
   require('plugins.telescope'),
   require('plugins.lsp-config'),
-  require('plugins.treesitter'),
   require('plugins.completions'),
 
   require('plugins.git'),
@@ -16,5 +16,5 @@ return {
   require('plugins.undotree'),
   require('plugins.whichkey'),
   require('plugins.debugging'),
-  require('plugins.autoformat'),
+--  require('plugins.autoformat'),
 }

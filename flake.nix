@@ -39,6 +39,8 @@
               pkgs.fd
               pkgs.ripgrep
 
+              pkgs.wget
+              pkgs.unzip
               # coq_nvim
               pkgs.python3
               pkgs.sqlite
