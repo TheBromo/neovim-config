@@ -1,49 +1,49 @@
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
-		main = "nvim-treesitter.configs",
 
-		build = ":TSUpdate",
+	"nvim-treesitter/nvim-treesitter",
+	event = { "BufReadPre", "BufNewFile" },
+	main = "nvim-treesitter.configs",
 
-		opts = {
-			      ensure_installed = {},
-      ignore_install = {},
+	build = ":TSUpdate",
 
-      sync_install = false,
-			auto_install = true,
-					incremental_selection = {
-						enable = true,
-						keymaps = {
-							init_selection = "<c-space>",
-							node_incremental = "<c-space>",
-							scope_incremental = "<c-s>",
-							node_decremental = "<M-space>",
-						},
-					},
-	
-						swap = {
-							enable = true,
-							swap_next = {
-								["<leader>a"] = "@parameter.inner",
-							},
-							swap_previous = {
-								["<leader>A"] = "@parameter.inner",
-							},
-						},
-			highlight = {
-				enable = true,
-				disable = function(_, buf)
-					return require("utils.file").is_large_buffer(buf)
-				end,
-			},
+	opts = {
+		ensure_installed = {},
+		ignore_install = {},
 
-			indent = {
-				enable = true,
-				disable = function(_, buf)
-					return require("utils.file").is_large_buffer(buf)
-				end,
+		sync_install = false,
+		auto_install = true,
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection = "<c-space>",
+				node_incremental = "<c-space>",
+				scope_incremental = "<c-s>",
+				node_decremental = "<M-space>",
 			},
 		},
-},
+
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>a"] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>A"] = "@parameter.inner",
+			},
+		},
+		highlight = {
+			enable = true,
+			disable = function(_, buf)
+				return require("utils.file").is_large_buffer(buf)
+			end,
+		},
+
+		indent = {
+			enable = true,
+			disable = function(_, buf)
+				return require("utils.file").is_large_buffer(buf)
+			end,
+		},
+	},
+
 }

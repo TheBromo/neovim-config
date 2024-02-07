@@ -10,7 +10,6 @@ return {
   require('plugins.telescope'),
   require('plugins.git'),
   require('plugins.oil'),
-  --require('plugins.none-ls'),
   require('plugins.tmux'),
   require('plugins.cursor'),
   require('plugins.harpoon'),
