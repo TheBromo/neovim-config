@@ -55,7 +55,7 @@
               extraMakeWrapperArgs = pkgs.lib.escapeShellArgs extraPathArgs;
               configure = {
                 customRC = ''
-                  lua package.path = '${luaConfig}/lua/?.lua;${luaConfig}/lua/?/init.lua;' .. package.path
+                  lua package.path = '${luaConfig}/lua/?.lua;${luaConfig}/lua/?/?.lua;' .. package.path
                   luafile ${luaConfig}/init.lua
                 '';
               };
