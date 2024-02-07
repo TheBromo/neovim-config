@@ -1,0 +1,20 @@
+return {
+  require('plugins.colorscheme'),
+  require('plugins.lualine'),
+  require('plugins.barbecue'),
+  require('plugins.telescope'),
+  require('plugins.lsp-config'),
+  require('plugins.treesitter'),
+  require('plugins.completions'),
+
+  require('plugins.git'),
+  require('plugins.oil'),
+  require('plugins.none-ls'),
+  require('plugins.tmux'),
+  require('plugins.cursor'),
+  require('plugins.harpoon'),
+  require('plugins.undotree'),
+  require('plugins.whichkey'),
+  require('plugins.debugging'),
+  require('plugins.autoformat'),
+}

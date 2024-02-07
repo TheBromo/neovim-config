@@ -23,4 +23,4 @@ if not status_ok then
   return
 end
 
-lazy.setup("plugins")
+lazy.setup(require('plugins'))
