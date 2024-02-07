@@ -47,9 +47,8 @@ return {
           },
         },
       })
-      configure('lua-language-server',{})
-
-
+      configure('lua_ls',{})
+      
       -- dynamic
       configure('gopls')
     end,
