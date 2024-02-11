@@ -13,7 +13,7 @@ return {
     },
   },
 
-  event = 'InsertEnter',
+  --  event = 'InsertEnter',
 
   opts = function()
     local cmp = require('cmp')

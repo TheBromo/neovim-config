@@ -1,9 +1,10 @@
 return {
-	"mountain-theme/vim",
+	"ramojus/mellifluous.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
 		vim.opt.termguicolors = true
-		vim.cmd.colorscheme("mountain")
+		require 'mellifluous'.setup({})
+		vim.cmd.colorscheme("mellifluous")
 	end,
 }
