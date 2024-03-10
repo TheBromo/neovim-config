@@ -1,5 +1,4 @@
 return {
-
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
 	main = "nvim-treesitter.configs",
@@ -7,7 +6,7 @@ return {
 	build = ":TSUpdate",
 
 	opts = {
-		ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+		ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc" },
 		ignore_install = {},
 
 		sync_install = false,
@@ -26,5 +25,4 @@ return {
 			end,
 		},
 	},
-
 }

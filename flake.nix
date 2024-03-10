@@ -50,8 +50,7 @@
               pkgs.gopls
               pkgs.stylua
               pkgs.lua-language-server
-              pkgs.llvmPackages_17.clang-unwrapped
-
+              pkgs.ccls
             ];
 
             extraPathArgs = [ "--suffix" "PATH" ":" (pkgs.lib.makeBinPath deps) ];

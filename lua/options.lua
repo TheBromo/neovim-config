@@ -1,9 +1,9 @@
 -- encoding
-vim.opt.fileencoding = 'utf-8'
-vim.opt.spelllang = 'en'
+vim.opt.fileencoding = "utf-8"
+vim.opt.spelllang = "en"
 
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -12,21 +12,20 @@ vim.o.breakindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Sets how neovim will display certain whitespace in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
@@ -43,7 +42,7 @@ vim.opt.scrolloff = 999
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = "80"
 
 -- file backups
 vim.opt.backup = false
@@ -64,14 +63,14 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.opt.conceallevel = 1
 
-vim.opt.mouse = ''
-vim.opt.shortmess = 'IF'
+vim.opt.mouse = ""
+vim.opt.shortmess = "IF"
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- set update time for lsp hover
 vim.opt.updatetime = 300
 
 -- extend comment when hitting ENTER in insert mode
-vim.opt.formatoptions:append('r')
+vim.opt.formatoptions:append("r")
