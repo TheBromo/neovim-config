@@ -30,3 +30,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- My Custom keymaps
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "jj", "<Esc>")
