@@ -25,9 +25,11 @@ return {
 	require("plugins.git"),
 	require("plugins.oil"),
 	require("plugins.tmux"),
+
 	--  require('plugins.cursor'),
 	require("plugins.harpoon"),
 	require("plugins.undotree"),
+	require("plugins.obsidian"),
 	require("plugins.whichkey"),
 	--  require('plugins.debugging'),
 }
