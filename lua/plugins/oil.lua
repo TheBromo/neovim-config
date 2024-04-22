@@ -4,8 +4,14 @@ return {
 
 	event = "VeryLazy",
 	keys = {
-		{ "<leader>nf", "<cmd>Oil<cr>" },
+		{ "<leader>-", "<cmd>Oil<cr>" },
+		{ "<leader>so", "<cmd>Oil --float<cr>" },
 	},
 
-	opts = {},
+	opts = {
+		float = {
+			-- Padding around the floating window
+			padding = 5,
+		},
+	},
 }

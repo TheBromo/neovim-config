@@ -24,7 +24,7 @@ return {
 		"ObsidianPasteImg",
 	},
 	keys = {
-		{ "<leader>t", "<cmd>ObsidianToday<cr>" },
+		{ "<leader>tt", "<cmd>ObsidianToday<cr>" },
 		{ "<leader>nn", "<cmd>ObsidianQuickSwitch<cr>" },
 		{ "<leader>fn", "<cmd>ObsidianSearch<cr>" },
 	},

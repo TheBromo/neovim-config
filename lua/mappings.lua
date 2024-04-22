@@ -18,6 +18,13 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- buffers
+vim.api.nvim_set_keymap("n", "tk", ":blast<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "tj", ":bfirst<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "th", ":bprev<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "tl", ":bnext<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", { noremap = false })
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
