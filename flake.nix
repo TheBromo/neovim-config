@@ -37,10 +37,6 @@
               pkgs.fd
               pkgs.ripgrep
 
-              # coq_nvim
-              pkgs.python3
-              pkgs.sqlite
-
               pkgs.curl
 
               # preinstalled lsp

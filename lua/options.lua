@@ -22,7 +22,7 @@ vim.opt.mouse = "a"
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -52,8 +52,8 @@ vim.opt.undofile = true
 
 -- indents
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 
 -- disable netrw
 vim.g.loaded_netrw = 1
@@ -63,14 +63,14 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.opt.conceallevel = 1
 
-vim.opt.mouse = ""
 vim.opt.shortmess = "IF"
+vim.g.have_nerd_font = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- set update time for lsp hover
-vim.opt.updatetime = 300
+vim.opt.updatetime = 250
 
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
