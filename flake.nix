@@ -44,6 +44,7 @@
               pkgs.nixpkgs-fmt
               pkgs.go
               pkgs.gopls
+              pkgs.gotools
               pkgs.stylua
               pkgs.lua-language-server
               pkgs.ccls
