@@ -47,6 +47,7 @@
               pkgs.gotools
               pkgs.stylua
               pkgs.lua-language-server
+              pkgs.yaml-language-server
               pkgs.ccls
             ];
 
