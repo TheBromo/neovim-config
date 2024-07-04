@@ -42,13 +42,18 @@
               # preinstalled lsp
               pkgs.nixd
               pkgs.nixpkgs-fmt
-              pkgs.go
+
+              pkgs.nodePackages.typescript-language-server
+              pkgs.vscode-langservers-extracted
+
               pkgs.gopls
               pkgs.gotools
+
               pkgs.stylua
               pkgs.lua-language-server
+
               pkgs.yaml-language-server
-              pkgs.ccls
+              pkgs.llvmPackages_18.clang-tools
             ];
 
             extraPathArgs = [ "--suffix" "PATH" ":" (pkgs.lib.makeBinPath deps) ];

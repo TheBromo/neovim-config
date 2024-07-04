@@ -1,11 +1,23 @@
 return {
-	{ -- LSP Configuration & Plugins
+	{
+		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for neovim
 			-- Useful status updates for LSP.
-			{ "j-hui/fidget.nvim", opts = {} },
+			{
+				"j-hui/fidget.nvim",
+				opts = {
+					notification = {
+
+						override_vim_notify = true,
+					},
+				},
+			},
 		},
+
+		event = "VeryLazy",
+
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -145,10 +157,13 @@ return {
 				},
 			})
 			configure("gopls", {})
-			configure("ccls", {})
+			configure("clangd", {})
+			configure("tsserver")
+			configure("eslint")
+			configure("pyright")
+
 			configure("lua_ls", {
 				-- cmd = {...},
-				-- filetypes { ...},
 				-- capabilities = {},
 				settings = {
 					Lua = {

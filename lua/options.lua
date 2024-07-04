@@ -64,7 +64,7 @@ vim.opt.termguicolors = true
 vim.opt.conceallevel = 1
 
 vim.opt.shortmess = "IF"
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
