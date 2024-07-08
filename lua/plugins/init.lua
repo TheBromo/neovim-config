@@ -1,8 +1,10 @@
 return {
 	"tpope/vim-sleuth",
 	-- Decorations
+	require("plugins.git"),
 	require("plugins.colorscheme"),
 	require("plugins.statusline"),
+	require("plugins.mini"),
 
 	-- Code intel
 	require("plugins.treesitter"),
@@ -19,7 +21,6 @@ return {
 	},
 
 	require("plugins.telescope"),
-	require("plugins.git"),
 	require("plugins.oil"),
 	require("plugins.tmux"),
 

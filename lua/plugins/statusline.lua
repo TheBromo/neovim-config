@@ -9,19 +9,29 @@ return {
 				component_separators = "",
 				icons_enabled = false,
 			},
+			sections = {
+				lualine_a = {
+					{ "mode", right_padding = 2 },
+				},
+				lualine_b = { "filename", "branch", "diff" },
+
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = { "filetype", "progress" },
+				lualine_z = {
+					{ "location", left_padding = 2 },
+				},
+			},
+			inactive_sections = {
+				lualine_a = { "filename" },
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = { "location" },
+			},
+			tabline = {},
+			extensions = {},
 		},
 	},
-	-- { -- Collection of various small independent plugins/modules
-	-- 	"echasnovski/mini.nvim",
-	-- 	config = function()
-	-- 		local statusline = require("mini.statusline")
-	-- 		statusline.setup({
-	-- 			use_icons = false,
-	-- 		})
-	--
-	-- 		statusline.section_location = function()
-	-- 			return "%2l:%-2v"
-	-- 		end
-	-- 	end,
-	-- },
 }

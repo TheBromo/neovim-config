@@ -9,10 +9,6 @@ return {
 	end,
 
 	opts = {
-		float = {
-			-- Padding around the floating window
-			padding = 5,
-		},
 		view_options = {
 			show_hidden = true,
 		},
