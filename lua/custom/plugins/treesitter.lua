@@ -14,14 +14,14 @@ return {
 		highlight = {
 			enable = true,
 			disable = function(_, buf)
-				return require("utils.file").is_large_buffer(buf)
+				return require("custom.utils.file").is_large_buffer(buf)
 			end,
 		},
 
 		indent = {
 			enable = true,
 			disable = function(_, buf)
-				return require("utils.file").is_large_buffer(buf)
+				return require("custom.utils.file").is_large_buffer(buf)
 			end,
 		},
 	},

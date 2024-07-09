@@ -1,9 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
-require("lua.custom.options")
-require("lua.custom.mappings")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	-- clone lazy if not already exists

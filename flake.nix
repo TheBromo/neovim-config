@@ -4,96 +4,69 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    neovim = {
+
+      url = "github:neovim/neovim/release-0.10?dir=contrib";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    let
-      lib = rec {
-        makeLuaConfig = (pkgs: pkgs.stdenv.mkDerivation {
-          name = "neovim-lua-config";
-          src = ./.;
-
-          dontUseCmakeConfigure = true;
-
-          installPhase = ''
-            mkdir -p $out/
-            cp -r init.lua lua $out/
-          '';
-        });
-
-        makeDistribution = (pkgs:
-          let
-            deps = [
-              # required to fetch plugins
-              pkgs.git
-
-              # required to build native libraries for things like treesitter
-              # or nvim-telesceope-fzf-native
-              pkgs.gcc
-              pkgs.gnumake
-              pkgs.cmake
-
-              # required for fuzzy finding in telescope
-              pkgs.fd
-              pkgs.ripgrep
-
-              pkgs.curl
-
-              # preinstalled lsp
-              pkgs.nixd
-              pkgs.nixpkgs-fmt
-
-              pkgs.nodePackages.typescript-language-server
-              pkgs.vscode-langservers-extracted
-
-              pkgs.gopls
-              pkgs.gotools
-
-              pkgs.stylua
-              pkgs.lua-language-server
-
-              pkgs.yaml-language-server
-              pkgs.llvmPackages_18.clang-tools
-            ];
-
-            extraPathArgs = [ "--suffix" "PATH" ":" (pkgs.lib.makeBinPath deps) ];
-
-            luaConfig = makeLuaConfig pkgs;
-
-            distribution = pkgs.wrapNeovim pkgs.neovim-unwrapped {
-              # required for github copilot
-              withNodeJs = true;
-
-              extraMakeWrapperArgs = pkgs.lib.escapeShellArgs extraPathArgs;
-              configure = {
-                customRC = ''
-                  lua package.path = '${luaConfig}/lua/?.lua;${luaConfig}/lua/?/init.lua;' .. package.path
-                  luafile ${luaConfig}/init.lua
-                '';
-              };
-            };
-          in
-          distribution);
-      };
-    in
-    lib //
+  outputs = { self, nixpkgs, flake-utils, neovim }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
-        distribution = lib.makeDistribution pkgs;
+        pkgs = import nixpkgs {
+          inherit system;
+
+
+          overlays = [
+            (final: prev: {
+              neovim-unwrapped = neovim.packages.${prev.system}.default.overrideAttrs
+                (final: prev: {
+                  treesitter-parsers = { };
+                });
+            })
+
+          ];
+        };
+
+
+        config = pkgs.callPackage ./nix/config.nix { };
+
+
+        distribution = pkgs.callPackage ./nix/distribution.nix {
+          custom-config = config;
+          preinstalled-lsp = [
+            pkgs.lua-language-server
+            pkgs.nixd
+            pkgs.nixpkgs-fmt
+            pkgs.gopls
+
+            pkgs.nodePackages.typescript-language-server
+            pkgs.vscode-langservers-extracted
+          ];
+        };
       in
       {
-        packages = rec {
-          config = lib.makeLuaConfig pkgs;
+        packages = {
+          config = config;
           default = distribution;
         };
 
         apps.default = {
           type = "app";
+
           program = "${distribution}/bin/nvim";
         };
 
+
         formatter = pkgs.nixpkgs-fmt;
+
       }
     );
 }
