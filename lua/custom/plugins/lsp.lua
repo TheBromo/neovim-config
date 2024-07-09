@@ -153,8 +153,6 @@ return {
         configure("pyright")
 
         configure("lua_ls", {
-            -- cmd = {...},
-            -- capabilities = {},
             settings = {
                 Lua = {
                     runtime = { version = "LuaJIT" },
