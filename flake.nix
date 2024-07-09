@@ -29,6 +29,12 @@
               neovim-unwrapped = neovim.packages.${prev.system}.default.overrideAttrs
                 (final: prev: {
                   treesitter-parsers = { };
+                  postPatch = ''
+                      mkdir -p $out/share/nvim/runtime/plugin
+                      echo "let g:loaded_netrwPlugin = 1" >> $out/share/nvim/runtime/plugin/netrwPlugin.vim
+                      echo "let g:loaded_netrw = 1" >> $out/share/nvim/runtime/plugin/netrwPlugin.vim
+                    substituteInPlace runtime/plugin/netrwPlugin.vim --replace "call s:ScriptCmd('netrw')" "\" call s:ScriptCmd('netrw')"
+                  '';
                 });
             })
 
