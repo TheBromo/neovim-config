@@ -42,7 +42,7 @@ vim.opt.scrolloff = 999
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
 -- file backups
 vim.opt.backup = false
