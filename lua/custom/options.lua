@@ -3,7 +3,7 @@ vim.opt.fileencoding = "utf-8"
 vim.opt.spelllang = "en"
 
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = "unnamed"
 
 -- Enable break indent
 vim.o.breakindent = true
