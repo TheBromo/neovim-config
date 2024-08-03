@@ -1,21 +1,17 @@
 { lib
 , pkgs
 , callPackage
-
 , neovim-unwrapped
 , neovimUtils
+, makeNeovimConfig ? neovimUtils.makeNeovimConfig
 , wrapNeovimUnstable
-
 , git
 , rocks ? pkgs.luajitPackages.luarocks
 , gcc
 , gnumake
-
 , cmake
 , fd
 , ripgrep
-
-
 , custom-config ? callPackage ./config.nix { }
 , preinstalled-lsp ? [ ]
 }:
@@ -27,30 +23,30 @@ let
 
     # required to build native libraries for things like treesitter
     # or nvim-telesceope-fzf-native
-
     gcc
     gnumake
-
     cmake
 
     # required for fuzzy finding in telescope
-
     fd
     ripgrep
   ] ++ preinstalled-lsp;
 
-  extraWrapperArgs = [ "--suffix" "PATH" ":" (lib.makeBinPath deps) ];
+  extraWrapperArgs =
+    [
+      "--suffix"
+      "PATH"
+      ":"
+      (lib.makeBinPath deps)
+    ];
 
-
-  res = neovimUtils.makeNeovimConfig {
+  res = makeNeovimConfig {
     withPython3 = false;
     withRuby = false;
 
-    plugins = [
-      custom-config
-    ];
+    plugins = [ custom-config ];
   };
 in
-wrapNeovimUnstable neovim-unwrapped (res // {
-  wrapperArgs = lib.escapeShellArgs (res.wrapperArgs ++ extraWrapperArgs);
-})
+wrapNeovimUnstable neovim-unwrapped (
+  res // { wrapperArgs = lib.escapeShellArgs (res.wrapperArgs ++ extraWrapperArgs); }
+)

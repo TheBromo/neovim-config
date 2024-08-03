@@ -33,6 +33,9 @@ return {
         -- See `:help cmp`
         local cmp = require("cmp")
         local luasnip = require("luasnip")
+        local winhighlight = {
+            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+        }
         luasnip.config.setup({})
         cmp.setup({
             snippet = {
@@ -41,6 +44,10 @@ return {
                 end,
             },
             completion = { completeopt = "menu,menuone,noinsert" },
+            window = {
+                completion = cmp.config.window.bordered(winhighlight),
+                documentation = cmp.config.window.bordered(winhighlight),
+            },
 
             -- For an understanding of why these mappings were
             -- chosen, you will need to read `:help ins-completion`

@@ -18,53 +18,53 @@ if not status_ok then
 end
 
 lazy.setup({
-    -- Decorations
-	require("custom.plugins.git"),
-	require("custom.plugins.colorscheme"),
-	require("custom.plugins.statusline"),
-	require("custom.plugins.mini"),
+        -- Decorations
+        require("custom.plugins.git"),
+        require("custom.plugins.colorscheme"),
+        require("custom.plugins.statusline"),
+        require("custom.plugins.mini"),
 
-	-- Code intel
-	require("custom.plugins.treesitter"),
-	require("custom.plugins.lsp"),
-	require("custom.plugins.autoformat"),
+        -- Code intel
+        require("custom.plugins.treesitter"),
+        require("custom.plugins.lsp"),
+        require("custom.plugins.autoformat"),
 
-	require("custom.plugins.completions"),
+        require("custom.plugins.completions"),
 
-	-- Highlight todo, notes, etc in comments
-	{
-		"folke/todo-comments.nvim",
-		event = { "BufRead", "BufWinEnter", "BufNewFile" },
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
-
-	require("custom.plugins.telescope"),
-	require("custom.plugins.oil"),
-	require("custom.plugins.tmux"),
-
-	require("custom.plugins.harpoon"),
-	require("custom.plugins.undotree"),
-	require("custom.plugins.obsidian"),
-
-},
-{
-    defaults = { lazy = true },
-    ui = {
-        icons = vim.g.have_nerd_font and {} or {
-            cmd = "⌘",
-            config = "🛠",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            require = "🌙",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-            lazy = "💤 ",
+        -- Highlight todo, notes, etc in comments
+        {
+            "folke/todo-comments.nvim",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+            dependencies = { "nvim-lua/plenary.nvim" },
+            opts = { signs = false },
         },
+
+        require("custom.plugins.telescope"),
+        require("custom.plugins.oil"),
+        require("custom.plugins.tmux"),
+
+        require("custom.plugins.harpoon"),
+        require("custom.plugins.undotree"),
+        require("custom.plugins.obsidian"),
+
     },
-})
+    {
+        defaults = { lazy = true },
+        ui = {
+            icons = vim.g.have_nerd_font and {} or {
+                cmd = "⌘",
+                config = "🛠",
+                event = "📅",
+                ft = "📂",
+                init = "⚙",
+                keys = "🗝",
+                plugin = "🔌",
+                runtime = "💻",
+                require = "🌙",
+                source = "📄",
+                start = "🚀",
+                task = "📌",
+                lazy = "💤 ",
+            },
+        },
+    })

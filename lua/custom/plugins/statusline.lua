@@ -1,35 +1,35 @@
 return {
-	"nvim-lualine/lualine.nvim",
-	event = "VeryLazy",
-	opts = {
-		options = {
-			theme = "moonfly",
-			section_separators = "",
-			component_separators = "",
-			icons_enabled = false,
-		},
-		sections = {
-			lualine_a = {
-				{ "mode", right_padding = 2 },
-			},
-			lualine_b = { "filename", "branch", "diff" },
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = {
+        options = {
+            theme = "moonfly",
+            section_separators = "",
+            component_separators = "",
+            icons_enabled = false,
+        },
+        sections = {
+            lualine_a = {
+                { "mode", right_padding = 2 },
+            },
+            lualine_b = { "filename", "branch", "diff" },
 
-			lualine_c = {},
-			lualine_x = {},
-			lualine_y = { "filetype", "progress" },
-			lualine_z = {
-				{ "location", left_padding = 2 },
-			},
-		},
-		inactive_sections = {
-			lualine_a = { "filename" },
-			lualine_b = {},
-			lualine_c = {},
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = { "location" },
-		},
-		tabline = {},
-		extensions = {},
-	},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = { "filetype", "progress" },
+            lualine_z = {
+                { "location", left_padding = 2 },
+            },
+        },
+        inactive_sections = {
+            lualine_a = { "filename" },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = { "location" },
+        },
+        tabline = {},
+        extensions = {},
+    },
 }
