@@ -3,7 +3,7 @@ return {
     event = "VeryLazy",
     opts = {
         options = {
-            theme = "moonfly",
+            theme = "auto",
             section_separators = "",
             component_separators = "",
             icons_enabled = false,
