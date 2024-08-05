@@ -2,6 +2,8 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
+        'nvim-tree/nvim-web-devicons',
+
         -- Snippet Engine & its associated nvim-cmp source
         {
             "L3MON4D3/LuaSnip",
