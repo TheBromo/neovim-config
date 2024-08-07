@@ -7,8 +7,7 @@ return {
             require("monokai-pro").setup({
                 terminal_colors = true,
                 filter = "pro",
-
-
+                devicons = true,
                 background_clear = {
                     "float_win",
                     "telescope",
@@ -43,19 +42,15 @@ return {
     },
     {
         'Shatur/neovim-ayu',
-        event = "VeryLazy",
         config = function()
             require('ayu').setup({
                 mirage = false,  -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
                 terminal = true, -- Set to `false` to let terminal manage its own colors.
-                overrides = {},  -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
             })
         end,
     },
     {
         'kartikp10/noctis.nvim',
-
-        event = "VeryLazy",
         dependencies = { 'rktjmp/lush.nvim' }
     },
     {
