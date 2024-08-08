@@ -3,7 +3,7 @@ vim.opt.fileencoding = "utf-8"
 vim.opt.spelllang = "en"
 
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = "unnamed"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -64,7 +64,7 @@ vim.opt.termguicolors = true
 vim.opt.conceallevel = 1
 
 vim.opt.shortmess = "IF"
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -72,6 +72,19 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- set update time for lsp hover
 vim.opt.updatetime = 250
 
+
+vim.opt.fillchars = {
+    horiz = '━',
+    horizup = '┻',
+    horizdown = '┳',
+    vert = '┃',
+    vertleft = '┫',
+    vertright = '┣',
+    verthoriz =
+    '╋',
+}
+
+vim.o.background = "dark"
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
 --

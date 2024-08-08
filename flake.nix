@@ -1,78 +1,96 @@
 {
-  description = "personal neovim configuration";
+  description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-
-    neovim = {
-
-      url = "github:neovim/neovim/release-0.10?dir=contrib";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-
-    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, neovim }:
+  outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
+        # Import nixpkgs with specific system
         pkgs = import nixpkgs {
-          inherit system;
-
-
-          overlays = [
-            (final: prev: {
-              neovim-unwrapped = neovim.packages.${prev.system}.default.overrideAttrs
-                (final: prev: {
-                  treesitter-parsers = { };
-                  postPatch = ''
-                      mkdir -p $out/share/nvim/runtime/plugin
-                      echo "let g:loaded_netrwPlugin = 1" >> $out/share/nvim/runtime/plugin/netrwPlugin.vim
-                      echo "let g:loaded_netrw = 1" >> $out/share/nvim/runtime/plugin/netrwPlugin.vim
-                    substituteInPlace runtime/plugin/netrwPlugin.vim --replace "call s:ScriptCmd('netrw')" "\" call s:ScriptCmd('netrw')"
-                  '';
-                });
-            })
-
-          ];
+          inherit system; # Change this according to your system architecture
         };
 
-
-        config = pkgs.callPackage ./nix/config.nix { };
-
-
-        distribution = pkgs.callPackage ./nix/distribution.nix {
-          custom-config = config;
-          preinstalled-lsp = [
-            pkgs.lua-language-server
-            pkgs.nixd
-            pkgs.nixpkgs-fmt
-            pkgs.gopls
-
-            pkgs.nodePackages.typescript-language-server
-            pkgs.vscode-langservers-extracted
-          ];
-        };
+        # The list of dependencies
+        runtimeDeps = [
+          pkgs.stdenv.cc
+          pkgs.cargo
+          pkgs.curl
+          pkgs.fd
+          pkgs.fzf
+          pkgs.git
+          pkgs.gnumake
+          pkgs.gnused
+          pkgs.gnutar
+          pkgs.gzip
+          pkgs.lua-language-server
+          pkgs.neovim
+          pkgs.nodejs
+          pkgs.nodePackages.neovim
+          pkgs.ripgrep
+          pkgs.tree-sitter
+          pkgs.unzip
+        ];
       in
       {
+        # Define the default package
         packages = {
-          config = config;
-          default = distribution;
+          default = pkgs.stdenv.mkDerivation {
+            pname = "nvim";
+            version = "1.0.0";
+            src = ./.;
+
+            nativeBuildInputs = [
+              pkgs.gnused
+              pkgs.makeWrapper
+            ];
+
+            buildInputs = runtimeDeps;
+
+            buildPhase = ''
+              runHook preBuild
+
+              mkdir -p share/nvim
+              cp init.lua  share/nvim
+              cp -r lua share/nvim
+
+              mkdir bin
+              cp utils/bin/nvim.template bin/nvim
+              chmod +x bin/nvim
+
+              substituteInPlace bin/nvim \
+                 --replace RUNTIME_DIR_VAR \$HOME/.local/share/nvim \
+                 --replace CONFIG_DIR_VAR \$HOME/.config/nvim \
+                 --replace CACHE_DIR_VAR \$HOME/.cache/nvim \
+                 --replace BASE_DIR_VAR $out/share/nvim \
+                 --replace neovim-binary ${pkgs.neovim}/bin/nvim
+
+              runHook postBuild
+            '';
+
+            installPhase = ''
+              runHook preInstall
+
+              mkdir -p $out
+              cp -r bin share $out
+
+              wrapProgram $out/bin/nvim --prefix PATH : ${pkgs.lib.makeBinPath runtimeDeps} \
+                --prefix LD_LIBRARY_PATH : ${pkgs.stdenv.cc.cc.lib} \
+                --prefix CC : ${pkgs.stdenv.cc.targetPrefix}cc
+
+              runHook postInstall
+            '';
+
+            meta = with pkgs.lib; {
+              description = "My personal IDE layer for Neovim";
+              homepage = "https://www.strenge.ch/";
+              platforms = platforms.unix;
+              mainProgram = "nvim";
+            };
+          };
         };
-
-        apps.default = {
-          type = "app";
-
-          program = "${distribution}/bin/nvim";
-        };
-
-
-        formatter = pkgs.nixpkgs-fmt;
-
-      }
-    );
+      });
 }
