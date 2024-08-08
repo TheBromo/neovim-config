@@ -32,38 +32,46 @@ require("custom.options")
 require("custom.mappings")
 
 lazy.setup({
+        { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+
         -- Decorations
         require("custom.plugins.git"),
-        require("custom.plugins.colorscheme"),
-        require("custom.plugins.statusline"),
-        require("custom.plugins.mini"),
+        { -- Useful plugin to show you pending keybinds.
+            'folke/which-key.nvim',
+            event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+            config = function() -- This is the function that runs, AFTER loading
+              require('which-key').setup()
 
-        -- Code intel
-        require("custom.plugins.treesitter"),
-        require("custom.plugins.lsp"),
-        require("custom.plugins.autoformat"),
-
-        require("custom.plugins.completions"),
-
-        -- Highlight todo, notes, etc in comments
-        {
-            "folke/todo-comments.nvim",
-            event = { "BufRead", "BufWinEnter", "BufNewFile" },
-            dependencies = { "nvim-lua/plenary.nvim" },
-            opts = { signs = false },
+              -- Document existing key chains
+              require('which-key').add {
+                { '<leader>c', group = '[C]ode' },
+                { '<leader>d', group = '[D]ocument' },
+                { '<leader>r', group = '[R]ename' },
+                { '<leader>s', group = '[S]earch' },
+                { '<leader>w', group = '[W]orkspace' },
+                { '<leader>t', group = '[T]oggle' },
+                { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+              }
+            end,
         },
 
         require("custom.plugins.telescope"),
+        require("custom.plugins.mason"),
+        require("custom.plugins.autoformat"),
+         require("custom.plugins.completions"),
+
+        require("custom.plugins.colorscheme"),
+        { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+        require("custom.plugins.mini"),
+        require("custom.plugins.treesitter"),
+
         require("custom.plugins.oil"),
         require("custom.plugins.tmux"),
-
         require("custom.plugins.harpoon"),
         require("custom.plugins.undotree"),
         require("custom.plugins.obsidian"),
-
     },
     {
-        defaults = { lazy = true },
         ui = {
             icons = vim.g.have_nerd_font and {} or {
                 cmd = "⌘",

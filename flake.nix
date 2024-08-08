@@ -85,7 +85,7 @@
             '';
 
             meta = with pkgs.lib; {
-              description = "IDE layer for Neovim";
+              description = "My personal IDE layer for Neovim";
               homepage = "https://www.strenge.ch/";
               platforms = platforms.unix;
               mainProgram = "nvim";
