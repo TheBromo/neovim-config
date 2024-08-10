@@ -11,5 +11,13 @@ return {
     opts = {
         default_file_explorer = true,
         skip_confirm_for_simple_edits = true,
+        view_options = {
+            -- Show files and directories that start with "."
+            show_hidden = false,
+            -- This function defines what is considered a "hidden" file
+            is_hidden_file = function(name, bufnr)
+                return vim.startswith(name, ".")
+            end,
+        }
     },
 }

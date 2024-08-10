@@ -36,29 +36,31 @@ lazy.setup({
 
         -- Decorations
         require("custom.plugins.git"),
-        { -- Useful plugin to show you pending keybinds.
+
+        {                       -- Useful plugin to show you pending keybinds.
             'folke/which-key.nvim',
             event = 'VimEnter', -- Sets the loading event to 'VimEnter'
             config = function() -- This is the function that runs, AFTER loading
-              require('which-key').setup()
+                require('which-key').setup()
 
-              -- Document existing key chains
-              require('which-key').add {
-                { '<leader>c', group = '[C]ode' },
-                { '<leader>d', group = '[D]ocument' },
-                { '<leader>r', group = '[R]ename' },
-                { '<leader>s', group = '[S]earch' },
-                { '<leader>w', group = '[W]orkspace' },
-                { '<leader>t', group = '[T]oggle' },
-                { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-              }
+                -- Document existing key chains
+                require('which-key').add {
+                    { '<leader>a', group = 'H[A]rpoon' },
+                    { '<leader>c', group = '[C]ode' },
+                    { '<leader>d', group = '[D]ocument' },
+                    { '<leader>r', group = '[R]ename' },
+                    { '<leader>s', group = '[S]earch' },
+                    { '<leader>w', group = '[W]orkspace' },
+                    { '<leader>t', group = '[T]oggle' },
+                    { '<leader>n', group = '[N]otes' },
+                    { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+                }
             end,
         },
 
         require("custom.plugins.telescope"),
         require("custom.plugins.mason"),
-        require("custom.plugins.autoformat"),
-         require("custom.plugins.completions"),
+        require("custom.plugins.completions"),
 
         require("custom.plugins.colorscheme"),
         { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },

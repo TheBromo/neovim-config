@@ -69,7 +69,7 @@ elseif theme == "ayu" then
             lazy = false,
             priority = 1000,
             config = function()
-                vim.g.ayucolor="dark"
+                vim.g.ayucolor = "dark"
                 vim.g.ayu_italic_comment = 1
 
                 vim.cmd([[colorscheme ayu]])
@@ -113,15 +113,13 @@ elseif theme == "deviuspro" then
 elseif theme == "gruvbox" then
     return {
         {
-            "ellisonleao/gruvbox.nvim",
+            "morhetz/gruvbox",
             name = "gruvbox",
             lazy = false,
             priority = 1000,
             config = function()
-                require("gruvbox").setup({
-                    terminal_colors = true,
-                    contrast = "hard",
-                })
+                vim.g.gruvbox_contrast_dark = "hard"
+                vim.g.gruvbox_contrast_light = "hard"
                 vim.cmd([[colorscheme gruvbox]])
             end,
         }

@@ -69,6 +69,7 @@ vim.g.have_nerd_font = true
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
 -- set update time for lsp hover
 vim.opt.updatetime = 250
 
@@ -87,20 +88,20 @@ vim.opt.fillchars = {
 vim.o.background = "dark"
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
---
--- local function set_tmux_status(status)
--- 	os.execute("tmux set status " .. status)
--- end
---
--- -- Create autocmds for entering and leaving Neovim
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	callback = function()
--- 		set_tmux_status("off")
--- 	end,
--- })
---
--- vim.api.nvim_create_autocmd("VimLeave", {
--- 	callback = function()
--- 		set_tmux_status("on")
--- 	end,
--- })
+
+local function set_tmux_status(status)
+    os.execute("tmux set status " .. status)
+end
+
+-- Create autocmds for entering and leaving Neovim
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        set_tmux_status("off")
+    end,
+})
+
+vim.api.nvim_create_autocmd("VimLeave", {
+    callback = function()
+        set_tmux_status("on")
+    end,
+})

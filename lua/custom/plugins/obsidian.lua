@@ -24,9 +24,9 @@ return {
         "ObsidianPasteImg",
     },
     keys = {
-        { "<leader>tt", "<cmd>ObsidianToday<cr>" },
-        { "<leader>nn", "<cmd>ObsidianQuickSwitch<cr>" },
-        { "<leader>fn", "<cmd>ObsidianSearch<cr>" },
+        { "<leader>nt", "<cmd>ObsidianToday<cr>",        desc = "[N]otes open [T]oday"  },
+        { "<leader>nn", "<cmd>ObsidianQuickSwitch<cr>",  desc = "[N]otes switch"  },
+        { "<leader>ns", "<cmd>ObsidianSearch<cr>",       desc = "[N]otes text [S]earch"  },
     },
 
     dependencies = {
