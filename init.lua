@@ -45,15 +45,14 @@ lazy.setup({
 
                 -- Document existing key chains
                 require('which-key').add {
-                    { '<leader>a', group = 'H[A]rpoon' },
-                    { '<leader>c', group = '[C]ode' },
-                    { '<leader>d', group = '[D]ocument' },
-                    { '<leader>r', group = '[R]ename' },
-                    { '<leader>s', group = '[S]earch' },
-                    { '<leader>w', group = '[W]orkspace' },
-                    { '<leader>t', group = '[T]oggle' },
-                    { '<leader>n', group = '[N]otes' },
-                    { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+                    { '<leader>a', group = 'H[A]rpoon', icon=""},
+                    { '<leader>c', group = '[C]ode', icon="󰅬"  },
+                    { '<leader>d', group = '[D]ocument', icon="󰈙" },
+                    { '<leader>r', group = '[R]ename',icon="󰑕" },
+                    { '<leader>s', group = '[S]earch',icon="" },
+                    { '<leader>w', group = '[W]orkspace',icon="󰉋" },
+                    { '<leader>t', group = '[T]oggle', icon=""},
+                    { '<leader>n', group = '[N]otes', icon="󰠮" },
                 }
             end,
         },
