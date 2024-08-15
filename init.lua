@@ -32,27 +32,22 @@ require("custom.options")
 require("custom.mappings")
 
 lazy.setup({
-        { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
-
-        -- Decorations
-        require("custom.plugins.git"),
-
-        {                       -- Useful plugin to show you pending keybinds.
+        { 'tpope/vim-sleuth' },
+        {
             'folke/which-key.nvim',
-            event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-            config = function() -- This is the function that runs, AFTER loading
+            event = 'VimEnter',
+            config = function()
                 require('which-key').setup()
-
-                -- Document existing key chains
                 require('which-key').add {
-                    { '<leader>a', group = 'H[A]rpoon', icon=""},
-                    { '<leader>c', group = '[C]ode', icon="󰅬"  },
-                    { '<leader>d', group = '[D]ocument', icon="󰈙" },
-                    { '<leader>r', group = '[R]ename',icon="󰑕" },
-                    { '<leader>s', group = '[S]earch',icon="" },
-                    { '<leader>w', group = '[W]orkspace',icon="󰉋" },
-                    { '<leader>t', group = '[T]oggle', icon=""},
-                    { '<leader>n', group = '[N]otes', icon="󰠮" },
+                    { '<leader>a', group = 'H[A]rpoon', icon = "" },
+                    { '<leader>c', group = '[C]ode', icon = "󰅬" },
+                    { '<leader>d', group = '[D]ocument', icon = "󰈙" },
+                    { '<leader>r', group = '[R]ename', icon = "󰑕" },
+                    { '<leader>s', group = '[S]earch', icon = "" },
+                    { '<leader>w', group = '[W]orkspace', icon = "󰉋" },
+                    { '<leader>b', group = '[B]reakpoint', icon = "󰃤"},
+                    { '<leader>t', group = '[T]oggle', icon = "" },
+                    { '<leader>n', group = '[N]otes', icon = "󰠮" },
                 }
             end,
         },
@@ -62,11 +57,11 @@ lazy.setup({
         require("custom.plugins.completions"),
 
         require("custom.plugins.colorscheme"),
-        { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
         require("custom.plugins.mini"),
         require("custom.plugins.treesitter"),
 
         require("custom.plugins.oil"),
+        require("custom.plugins.debugging"),
         require("custom.plugins.tmux"),
         require("custom.plugins.harpoon"),
         require("custom.plugins.undotree"),
