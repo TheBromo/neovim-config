@@ -39,15 +39,15 @@ lazy.setup({
             config = function()
                 require('which-key').setup()
                 require('which-key').add {
-                    { '<leader>a', group = 'H[A]rpoon', icon = "" },
-                    { '<leader>c', group = '[C]ode', icon = "󰅬" },
-                    { '<leader>d', group = '[D]ocument', icon = "󰈙" },
-                    { '<leader>r', group = '[R]ename', icon = "󰑕" },
-                    { '<leader>s', group = '[S]earch', icon = "" },
-                    { '<leader>w', group = '[W]orkspace', icon = "󰉋" },
-                    { '<leader>b', group = '[B]reakpoint', icon = "󰃤"},
-                    { '<leader>t', group = '[T]oggle', icon = "" },
-                    { '<leader>n', group = '[N]otes', icon = "󰠮" },
+                    { '<leader>a', group = 'H[A]rpoon' },
+                    { '<leader>c', group = '[C]ode'  },
+                    { '<leader>d', group = '[D]ocument' },
+                    { '<leader>r', group = '[R]ename'},
+                    { '<leader>s', group = '[S]earch'},
+                    { '<leader>w', group = '[W]orkspace'},
+                    { '<leader>b', group = '[B]reakpoint'},
+                    { '<leader>t', group = '[T]oggle'},
+                    { '<leader>n', group = '[N]otes'},
                 }
             end,
         },
@@ -61,6 +61,7 @@ lazy.setup({
         require("custom.plugins.treesitter"),
 
         require("custom.plugins.oil"),
+        require("custom.plugins.lualine"),
         require("custom.plugins.debugging"),
         require("custom.plugins.tmux"),
         require("custom.plugins.harpoon"),

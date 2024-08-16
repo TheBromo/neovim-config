@@ -17,7 +17,7 @@ if theme == "monokai-pro" then
                 require("monokai-pro").setup({
                     terminal_colors = true,
                     filter = "pro",
-                    devicons = true,
+                    devicons = false,
                     background_clear = {
                         "float_win",
                         "telescope",
@@ -149,6 +149,66 @@ elseif theme == "kanagawa" then
                 vim.cmd([[colorscheme kanagawa-dragon]])
             end
         }
+    }
+elseif theme == "sonokai-pro" then
+    return {
+        'sainnhe/sonokai',
+        lazy = false,
+        priority = 1000,
+
+        config = function()
+
+            local background = "#121212"
+            local highlight = "#353535"
+
+            vim.g.sonokai_enable_italic = true
+            vim.g.sonokai_style = "default"
+            vim.g.sonokai_better_performance = 1
+            vim.g.sonokai_enable_italic = 1
+
+            vim.g.sonokai_transparent_background = 1
+            vim.g.sonokai_diagnostic_virtual_text = "colored"
+
+            vim.cmd.colorscheme('sonokai')
+            -- Set overrides
+            local hl = function(group, opts)
+                vim.api.nvim_set_hl(0, group, opts)
+            end
+
+            hl("@text.note", {
+                bold = true,
+                standout = true,
+            })
+            hl("WinSeparator", {
+
+                fg = highlight,
+            })
+            hl("QuickScopePrimary", {
+                bold = true,
+                bg = "#6dcccc",
+                fg = background,
+            })
+            hl("QuickScopeSecondary", {
+                bold = true,
+                bg = "#888888",
+                fg = background,
+            })
+            hl("SignColumn", {
+                bg = "None",
+            })
+            hl("IndentBlankLineChar", {
+                fg = highlight,
+                nocombine = true,
+            })
+            hl("IndentBlankLineContextChar", {
+                fg = "#888888",
+                nocombine = true,
+            })
+            hl("IndentBlankLineSpaceChar", {
+                fg = highlight,
+                nocombine = true,
+            })
+        end
     }
 else
     return {}
