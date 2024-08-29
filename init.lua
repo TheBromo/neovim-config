@@ -33,25 +33,6 @@ require("custom.mappings")
 
 lazy.setup({
         { 'tpope/vim-sleuth' },
-        {
-            'folke/which-key.nvim',
-            event = 'VimEnter',
-            config = function()
-                require('which-key').setup()
-                require('which-key').add {
-                    { '<leader>a', group = 'H[A]rpoon' },
-                    { '<leader>c', group = '[C]ode'  },
-                    { '<leader>d', group = '[D]ocument' },
-                    { '<leader>r', group = '[R]ename'},
-                    { '<leader>s', group = '[S]earch'},
-                    { '<leader>w', group = '[W]orkspace'},
-                    { '<leader>b', group = '[B]reakpoint'},
-                    { '<leader>t', group = '[T]oggle'},
-                    { '<leader>n', group = '[N]otes'},
-                }
-            end,
-        },
-
         require("custom.plugins.telescope"),
         require("custom.plugins.mason"),
         require("custom.plugins.completions"),
