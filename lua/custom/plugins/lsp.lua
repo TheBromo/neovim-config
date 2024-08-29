@@ -1,3 +1,10 @@
+local function configure_lsp_server(server,config,capabilities)
+    config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
+    require('lspconfig')[server].setup(config)
+end
+
+
+
 return {
     {
         'folke/lazydev.nvim',
@@ -12,22 +19,6 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            {
-                'williamboman/mason.nvim',
-                config = function()
-                    require('mason').setup({
-                        PATH = "append",
-                        install_root_dir = vim.fn.stdpath("data") .. "/mason",
-                        pip = {
-                            install_args = {},
-                            upgrade_pip = false
-                        },
-                    })
-                end
-            },
-            'williamboman/mason-lspconfig.nvim',
-            'WhoIsSethDaniel/mason-tool-installer.nvim',
-
             -- Useful status updates for LSP.
             { 'j-hui/fidget.nvim', opts = {} },
 
@@ -110,9 +101,9 @@ return {
                     end
                 end,
             })
+           local capabilities = vim.lsp.protocol.make_client_capabilities()
+           capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
             local servers = {
                 yamlls = {
                     settings = {
@@ -147,6 +138,7 @@ return {
                 gopls = {},
                 pyright = {},
                 tsserver = {},
+                omnisharp = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -158,21 +150,9 @@ return {
                 },
             }
 
-            local ensure_installed = vim.tbl_keys(servers or {})
-            vim.list_extend(ensure_installed, {
-                'stylua', -- Used to format Lua code
-            })
-            require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-            require('mason-lspconfig').setup {
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                        require('lspconfig')[server_name].setup(server)
-                    end,
-                },
-            }
+            for server, config in pairs(servers) do
+                configure_lsp_server(server,config, capabilities)
+            end
         end,
     },
 }

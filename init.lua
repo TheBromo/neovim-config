@@ -34,8 +34,9 @@ require("custom.mappings")
 lazy.setup({
         { 'tpope/vim-sleuth' },
         require("custom.plugins.telescope"),
-        require("custom.plugins.mason"),
+        require("custom.plugins.lsp"),
         require("custom.plugins.completions"),
+        require("custom.plugins.autoformat"),
 
         require("custom.plugins.colorscheme"),
         require("custom.plugins.mini"),
