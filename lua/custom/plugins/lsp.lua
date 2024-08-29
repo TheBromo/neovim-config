@@ -1,4 +1,4 @@
-local function configure_lsp_server(server,config,capabilities)
+local function configure_lsp_server(server, config, capabilities)
     config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
     require('lspconfig')[server].setup(config)
 end
@@ -101,8 +101,8 @@ return {
                     end
                 end,
             })
-           local capabilities = vim.lsp.protocol.make_client_capabilities()
-           capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
             local servers = {
                 yamlls = {
@@ -138,7 +138,7 @@ return {
                 gopls = {},
                 pyright = {},
                 tsserver = {},
-                omnisharp = {},
+                csharp_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -151,7 +151,7 @@ return {
             }
 
             for server, config in pairs(servers) do
-                configure_lsp_server(server,config, capabilities)
+                configure_lsp_server(server, config, capabilities)
             end
         end,
     },
