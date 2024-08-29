@@ -2,8 +2,6 @@ local theme_file = vim.fn.stdpath('config') .. '/.nvim_theme'
 local theme = 'monokai-pro'
 if vim.fn.filereadable(theme_file) == 1 then
     theme = vim.fn.readfile(theme_file)[1]
-    vim.print(theme)
-    vim.fn.setenv("NVIM_THEME", theme)
 end
 
 
@@ -157,7 +155,6 @@ elseif theme == "sonokai-pro" then
         priority = 1000,
 
         config = function()
-
             local background = "#121212"
             local highlight = "#353535"
 

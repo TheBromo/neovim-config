@@ -95,7 +95,6 @@ return {
                         local selection = action_state.get_selected_entry()
                         if selection then
                             local theme = selection[1]
-                            vim.fn.setenv("NVIM_THEME", theme)
                             vim.fn.writefile({ theme }, vim.fn.stdpath('config') .. '/.nvim_theme')
                             actions.close(prompt_bufnr)
 
