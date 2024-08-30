@@ -138,7 +138,6 @@ return {
                 gopls = {},
                 pyright = {},
                 tsserver = {},
-                csharp_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -149,6 +148,22 @@ return {
                     },
                 },
             }
+
+            if vim.fn.executable("OmniSharp") == 1 then
+                servers.omnisharp = {
+                    cmd = { vim.fn.exepath("OmniSharp") },
+                    settings = {
+                        MsBuild = {
+                            LoadProjectsOnDemand = true,
+                        },
+                        omnisharp = {
+                            enableRoslynAnalyzers = true,
+                            EnableImportCompletion = true,
+                            AnalyzeOpenDocumentsOnly = true,
+                        },
+                    },
+                }
+            end
 
             for server, config in pairs(servers) do
                 configure_lsp_server(server, config, capabilities)
