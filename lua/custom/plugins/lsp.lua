@@ -139,9 +139,6 @@ return {
                 pyright = {},
                 tsserver = {},
                 csharp_ls = {},
-                omnisharp = {
-                    cmd = { vim.fn.exepath("OmniSharp") },
-                },
                 lua_ls = {
                     settings = {
                         Lua = {
