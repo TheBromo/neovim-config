@@ -137,7 +137,7 @@ return {
                 clangd = {},
                 gopls = {},
                 pyright = {},
-                tsserver = {},
+                ts_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
