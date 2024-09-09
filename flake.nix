@@ -27,6 +27,7 @@
           pkgs.gnutar
           pkgs.gzip
           pkgs.lua-language-server
+          pkgs.nixd
           pkgs.neovim
           pkgs.nodejs
           pkgs.nodePackages.neovim

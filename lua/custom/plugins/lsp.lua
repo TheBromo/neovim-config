@@ -134,6 +134,7 @@ return {
                         },
                     },
                 },
+                nixd = {},
                 clangd = {},
                 gopls = {},
                 pyright = {},
