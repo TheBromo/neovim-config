@@ -26,8 +26,13 @@
           pkgs.gnused
           pkgs.gnutar
           pkgs.gzip
+
+          #lsp's
           pkgs.lua-language-server
           pkgs.nixd
+          pkgs.typescript-language-server
+          pkgs.gopls
+
           pkgs.neovim
           pkgs.nodejs
           pkgs.nodePackages.neovim
