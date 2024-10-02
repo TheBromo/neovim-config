@@ -74,7 +74,8 @@ return {
             "deviuspro",
             "gruvbox",
             "brightburn",
-            "kanagawa"
+            "kanagawa",
+            "light"
         }
 
         local function select_theme()

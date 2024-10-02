@@ -122,6 +122,17 @@ elseif theme == "gruvbox" then
             end,
         }
     }
+elseif theme == "light" then
+    return {
+        {
+            "catppuccin/nvim",
+            name = "catppuccin",
+            priority = 1000,
+            config = function()
+                vim.cmd([[colorscheme catppuccin-latte]])
+            end
+        }
+    }
 elseif theme == "brightburn" then
     return {
         {
