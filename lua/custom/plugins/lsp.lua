@@ -139,7 +139,7 @@ return {
                 gopls = {},
                 pyright = {},
                 tsserver = {},
-                ts_ls = {},
+                -- ts_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {

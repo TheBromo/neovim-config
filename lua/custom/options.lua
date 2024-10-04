@@ -89,19 +89,19 @@ vim.o.background = "dark"
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
 
-local function set_tmux_status(status)
-    os.execute("tmux set status " .. status)
-end
-
--- Create autocmds for entering and leaving Neovim
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        set_tmux_status("off")
-    end,
-})
-
-vim.api.nvim_create_autocmd("VimLeave", {
-    callback = function()
-        set_tmux_status("on")
-    end,
-})
+-- local function set_tmux_status(status)
+--     os.execute("tmux set status " .. status)
+-- end
+--
+-- -- Create autocmds for entering and leaving Neovim
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         set_tmux_status("off")
+--     end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("VimLeave", {
+--     callback = function()
+--         set_tmux_status("on")
+--     end,
+-- })
