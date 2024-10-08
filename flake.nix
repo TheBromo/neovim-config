@@ -30,7 +30,10 @@
           #lsp's
           pkgs.lua-language-server
           pkgs.nixd
-          pkgs.typescript-language-server
+          pkgs.nodePackages.typescript-language-server
+          pkgs.typescript
+          pkgs.vscode-langservers-extracted
+          pkgs.yaml-language-server
           pkgs.gopls
 
           pkgs.neovim

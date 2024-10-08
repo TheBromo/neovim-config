@@ -134,12 +134,15 @@ return {
                         },
                     },
                 },
+                cssls = {},
+                eslint = {},
+                html = {},
+                jsonls = {},
                 nixd = {},
                 clangd = {},
                 gopls = {},
                 pyright = {},
-                tsserver = {},
-                -- ts_ls = {},
+                ts_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
