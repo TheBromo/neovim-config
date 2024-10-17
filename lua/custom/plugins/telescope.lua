@@ -21,6 +21,9 @@ return {
                     results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                     preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                 },
+                file_ignore_patterns = {
+                    "node_modules"
+                }
                 -- other configuration options
             },
 
