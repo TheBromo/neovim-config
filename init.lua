@@ -41,6 +41,7 @@ lazy.setup({
         require("custom.plugins.colorscheme"),
         require("custom.plugins.mini"),
         require("custom.plugins.treesitter"),
+        require("custom.plugins.autopairs"),
 
         require("custom.plugins.oil"),
         require("custom.plugins.lualine"),
