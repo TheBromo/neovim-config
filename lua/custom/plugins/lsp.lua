@@ -134,6 +134,7 @@ return {
                         },
                     },
                 },
+                kotlin_language_server = {},
                 cssls = {},
                 eslint = {},
                 html = {},

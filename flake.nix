@@ -36,6 +36,7 @@
           pkgs.yaml-language-server
           pkgs.gopls
           pkgs.tailwindcss-language-server
+          pkgs.kotlin-language-server
 
           pkgs.neovim
           pkgs.nodejs
