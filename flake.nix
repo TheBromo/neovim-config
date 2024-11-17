@@ -26,6 +26,7 @@
           pkgs.gnused
           pkgs.gnutar
           pkgs.gzip
+          pkgs.wget
 
           #lsp's
           pkgs.lua-language-server
@@ -41,9 +42,12 @@
           pkgs.neovim
           pkgs.nodejs
           pkgs.nodePackages.neovim
+          pkgs.python3
           pkgs.ripgrep
           pkgs.tree-sitter
           pkgs.unzip
+          pkgs.lua
+          pkgs.luajitPackages.luarocks-nix
         ];
       in
       {
@@ -53,6 +57,8 @@
             pname = "nvim";
             version = "1.0.0";
             src = ./.;
+            dontUseCmakeConfigure = true;
+
 
             nativeBuildInputs = [
               pkgs.gnused
