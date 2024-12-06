@@ -41,8 +41,9 @@
 
           pkgs.neovim
           pkgs.nodejs
-          pkgs.nodePackages.neovim
           pkgs.python3
+	  pkgs.neovim-node-client
+
           pkgs.ripgrep
           pkgs.tree-sitter
           pkgs.unzip
