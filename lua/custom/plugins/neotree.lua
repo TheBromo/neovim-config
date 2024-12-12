@@ -9,6 +9,10 @@ return {
         },
         config = function()
             require("neo-tree").setup({
+
+                update_focused_file = {
+                    enable = true,
+                },
                 filesystem = {
                     filtered_items = {
                         visible = true, -- when true, they will just be displayed differently than normal items

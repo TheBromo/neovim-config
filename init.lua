@@ -44,7 +44,7 @@ lazy.setup({
         require("custom.plugins.autopairs"),
 
         require("custom.plugins.oil"),
-        -- require("custom.plugins.lualine"),
+        require("custom.plugins.nvimtree"),
         require("custom.plugins.neotree"),
         require("custom.plugins.debugging"),
         require("custom.plugins.tmux"),
