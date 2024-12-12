@@ -45,7 +45,6 @@ lazy.setup({
 
         require("custom.plugins.oil"),
         require("custom.plugins.nvimtree"),
-        require("custom.plugins.neotree"),
         require("custom.plugins.debugging"),
         require("custom.plugins.tmux"),
         require("custom.plugins.harpoon"),
