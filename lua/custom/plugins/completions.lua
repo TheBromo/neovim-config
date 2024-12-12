@@ -12,12 +12,12 @@ return {
           return 'make install_jsregexp'
         end)()
       },
-      {
-        'rafamadriz/friendly-snippets',
-        config = function()
-          require('luasnip.loaders.from_vscode').lazy_load()
-        end,
-      },
+      -- {
+      --   'rafamadriz/friendly-snippets',
+      --   config = function()
+      --     require('luasnip.loaders.from_vscode').lazy_load()
+      --   end,
+      -- },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
@@ -34,6 +34,18 @@ return {
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
+
+
+        formatting = {
+          fields = { "kind", "abbr" },
+          expandable_indicator = false,
+          format = function(_, vim_item)
+            local icon, hl = MiniIcons.get("lsp", vim_item.kind)
+            vim_item.kind = icon .. " " .. vim_item.kind
+            vim_item.kind_hl_group = hl
+            return vim_item
+          end,
+        },
 
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item

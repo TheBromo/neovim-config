@@ -13,9 +13,9 @@ return {
         skip_confirm_for_simple_edits = true,
         view_options = {
             -- Show files and directories that start with "."
-            show_hidden = false,
+            show_hidden = true,
             -- This function defines what is considered a "hidden" file
-            is_hidden_file = function(name, bufnr)
+            is_hidden_file = function(name, _)
                 return vim.startswith(name, ".")
             end,
         }

@@ -1,4 +1,5 @@
 return {
+    -- unused
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
     config = function()

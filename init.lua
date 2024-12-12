@@ -23,6 +23,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
     return
@@ -39,17 +40,18 @@ lazy.setup({
         require("custom.plugins.autoformat"),
 
         require("custom.plugins.colorscheme"),
-        require("custom.plugins.mini"),
         require("custom.plugins.treesitter"),
         require("custom.plugins.autopairs"),
 
         require("custom.plugins.oil"),
-        require("custom.plugins.lualine"),
+        -- require("custom.plugins.lualine"),
+        require("custom.plugins.neotree"),
         require("custom.plugins.debugging"),
         require("custom.plugins.tmux"),
         require("custom.plugins.harpoon"),
         require("custom.plugins.undotree"),
         require("custom.plugins.obsidian"),
+        require("custom.plugins.mini"),
     },
     {
         ui = {

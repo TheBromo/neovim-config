@@ -1,5 +1,5 @@
 return {
-    { 
+    {
         'nvim-treesitter/nvim-treesitter',
         lazy = false,
 
@@ -23,6 +23,5 @@ return {
         'nvim-treesitter/nvim-treesitter-context',
         cmd = { 'TSContextEnable', 'TSContextDisable', 'TSContextToggle' },
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
-
     },
 }
