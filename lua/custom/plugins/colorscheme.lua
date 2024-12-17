@@ -32,6 +32,45 @@ if theme == "monokai-pro" then
             end
         }
     }
+elseif theme == "nightlamp" then
+    return {
+        "MinhCreator/base46.nvim",
+        lazy = false,
+
+        config = function()
+            local present, base46 = pcall(require, "base46")
+            if not present then
+                return
+            end
+
+            local t = "nightlamp"
+
+            local theme_opts = {
+                theme = t,
+            }
+
+            base46.load_theme(theme_opts)
+        end,
+    }
+elseif theme == "mountain" then
+    return {
+        "MinhCreator/base46.nvim",
+        lazy = false,
+
+        config = function()
+            local present, base46 = pcall(require, "base46")
+            if not present then
+                return
+            end
+
+            local t = "mountain"
+            local theme_opts = {
+                theme = t,
+            }
+
+            base46.load_theme(theme_opts)
+        end,
+    }
 elseif theme == "moonfly" then
     return {
         {

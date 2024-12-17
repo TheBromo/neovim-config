@@ -71,6 +71,8 @@ return {
 
         local themes = {
             "monokai-pro",
+            "mountain",
+            "nightlamp",
             "sonokai-pro",
             "moonfly",
             "midnight-desert",
