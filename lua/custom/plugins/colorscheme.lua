@@ -159,6 +159,15 @@ elseif theme == "kanagawa" then
             end
         }
     }
+elseif theme == "vercel" then
+    return {
+        "https://github.com/ceigh/vercel-theme.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd("colorscheme vercel")
+        end,
+    }
 elseif theme == "sonokai-pro" then
     return {
         'sainnhe/sonokai',

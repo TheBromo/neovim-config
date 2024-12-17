@@ -29,6 +29,7 @@ return {
             },
 
             extensions = {
+                fzf = {},
                 ["ui-select"] = {
                     require("telescope.themes").get_dropdown(),
                 },
@@ -80,7 +81,8 @@ return {
             "gruvbox",
             "brightburn",
             "kanagawa",
-            "light"
+            "light",
+            "vercel"
         }
 
         local function select_theme()

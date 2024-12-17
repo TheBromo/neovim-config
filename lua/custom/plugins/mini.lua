@@ -17,7 +17,7 @@ return {
     require('mini.surround').setup()
 
     require('mini.icons').setup({
-      -- style = 'ascii',
+      style = 'ascii',
     })
     MiniIcons.mock_nvim_web_devicons()
     MiniIcons.tweak_lsp_kind('replace')

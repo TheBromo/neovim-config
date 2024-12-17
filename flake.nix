@@ -37,7 +37,7 @@
           pkgs.yaml-language-server
           pkgs.gopls
           pkgs.tailwindcss-language-server
-          pkgs.kotlin-language-server
+          # pkgs.kotlin-language-server
 
           pkgs.neovim
           pkgs.nodejs
@@ -56,7 +56,7 @@
         packages = {
           default = pkgs.stdenv.mkDerivation {
             pname = "nvim";
-            version = "1.0.1";
+            version = "1.0.2";
             src = ./.;
             dontUseCmakeConfigure = true;
 
