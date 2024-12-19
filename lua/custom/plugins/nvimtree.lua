@@ -7,15 +7,15 @@ return {
                 enable = true,
             },
             renderer = {
-                -- indent_markers = { enable = true, },
+                indent_markers = { enable = true, },
                 icons = {
                     show = {
-                        file = false,
+                        file = vim.g.have_nerd_font,
                         folder = false,
                     },
                     web_devicons = {
                         file = {
-                            enable = false,
+                            enable = vim.g.have_nerd_font,
                             color = true,
                         },
                         folder = {
