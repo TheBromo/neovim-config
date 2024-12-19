@@ -15,7 +15,7 @@ if theme == "monokai-pro" then
                 require("monokai-pro").setup({
                     terminal_colors = true,
                     filter = "pro",
-                    devicons = vim.g.have_nerd_font,
+                    -- devicons = vim.g.have_nerd_font,
                     background_clear = {
                         "float_win",
                         "telescope",
