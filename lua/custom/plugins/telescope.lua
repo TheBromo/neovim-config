@@ -85,6 +85,7 @@ return {
 			"light",
 			"vercel",
 			"vesper",
+			"none",
 		}
 
 		local function select_theme()

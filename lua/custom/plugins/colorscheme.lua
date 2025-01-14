@@ -203,6 +203,8 @@ elseif theme == "vesper" then
 			vim.cmd("colorscheme vesper")
 		end,
 	}
-elseif theme == "none" then
-	return {}
 end
+
+vim.o.termguicolors = false
+vim.cmd("colorscheme default")
+return {}

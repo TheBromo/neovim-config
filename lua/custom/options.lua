@@ -73,16 +73,14 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- set update time for lsp hover
 vim.opt.updatetime = 250
 
-
 vim.opt.fillchars = {
-    horiz = '━',
-    horizup = '┻',
-    horizdown = '┳',
-    vert = '┃',
-    vertleft = '┫',
-    vertright = '┣',
-    verthoriz =
-    '╋',
+	horiz = "━",
+	horizup = "┻",
+	horizdown = "┳",
+	vert = "┃",
+	vertleft = "┫",
+	vertright = "┣",
+	verthoriz = "╋",
 }
 
 vim.o.background = "dark"
