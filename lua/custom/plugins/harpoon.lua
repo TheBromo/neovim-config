@@ -9,7 +9,7 @@ return {
 			function()
 				require("harpoon"):list():add()
 			end,
-			desc = "[A]dd to harpoon"
+			desc = "[A]dd to harpoon",
 		},
 		{
 			"<C-e>",
@@ -17,7 +17,7 @@ return {
 				local harpoon = require("harpoon")
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
-			desc = "Harpoon [E]xplorer"
+			desc = "Harpoon [E]xplorer",
 		},
 
 		{
