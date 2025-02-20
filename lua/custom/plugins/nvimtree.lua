@@ -12,6 +12,7 @@ return {
 				enable = true,
 			},
 			renderer = {
+				group_empty = true,
 				indent_markers = { enable = true },
 				icons = {
 					glyphs = {
