@@ -3,7 +3,9 @@ vim.opt.fileencoding = "utf-8"
 vim.opt.spelllang = "en"
 
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = "unnamed"
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -38,11 +40,12 @@ vim.opt.showmode = false
 -- line handling
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 
 vim.opt.colorcolumn = "120"
+vim.opt.timeoutlen = 300
 
 -- file backups
 vim.opt.backup = false
@@ -67,7 +70,6 @@ vim.opt.shortmess = "IF"
 vim.g.have_nerd_font = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- set update time for lsp hover
@@ -86,20 +88,3 @@ vim.opt.fillchars = {
 vim.o.background = "dark"
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
-
--- local function set_tmux_status(status)
---     os.execute("tmux set status " .. status)
--- end
---
--- -- Create autocmds for entering and leaving Neovim
--- vim.api.nvim_create_autocmd("VimEnter", {
---     callback = function()
---         set_tmux_status("off")
---     end,
--- })
---
--- vim.api.nvim_create_autocmd("VimLeave", {
---     callback = function()
---         set_tmux_status("on")
---     end,
--- })
