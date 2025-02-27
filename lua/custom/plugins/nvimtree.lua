@@ -45,6 +45,7 @@ return {
 				decorators = { "Open", "Hidden", "Modified", "Copied", "Cut" },
 			},
 			view = {
+				width = 45,
 				side = "right",
 			},
 		})
