@@ -88,3 +88,5 @@ vim.opt.fillchars = {
 vim.o.background = "dark"
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
+
+vim.opt.shell = "/usr/bin/zsh"
