@@ -1,6 +1,3 @@
-require("custom.options")
-require("custom.mappings")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -17,17 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("custom.options")
+require("custom.mappings")
+
 require("lazy").setup({
 	{ "tpope/vim-sleuth" },
 	require("custom.plugins.telescope"),
-	require("custom.plugins.treesitter"),
 	require("custom.plugins.lsp"),
 	require("custom.plugins.completions"),
 	require("custom.plugins.autoformat"),
-	--
 	require("custom.plugins.colorscheme"),
 	require("custom.plugins.autopairs"),
-	--
 	require("custom.plugins.mini"),
 	require("custom.plugins.nvimtree"),
 	require("custom.plugins.oil"),
@@ -35,6 +32,7 @@ require("lazy").setup({
 	require("custom.plugins.harpoon"),
 	require("custom.plugins.undotree"),
 	require("custom.plugins.obsidian"),
+	require("custom.plugins.treesitter"),
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
