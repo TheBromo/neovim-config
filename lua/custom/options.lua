@@ -90,3 +90,5 @@ vim.o.background = "dark"
 vim.opt.formatoptions:append("r")
 
 vim.opt.shell = "/usr/bin/zsh"
+
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
