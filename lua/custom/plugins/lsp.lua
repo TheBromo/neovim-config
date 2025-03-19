@@ -13,6 +13,7 @@ return {
 		},
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
+
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
@@ -23,6 +24,7 @@ return {
 			{ "williamboman/mason.nvim", opts = {} },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"nvim-java/nvim-java",
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -156,7 +158,16 @@ return {
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {},
-				gopls = {},
+				gopls = {
+					settings = {
+						gopls = {
+							hints = {
+								functionTypeParameters = true,
+								parameterNames = true,
+							},
+						},
+					},
+				},
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -166,7 +177,11 @@ return {
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				ts_ls = {},
-				jdtls = {},
+				-- jdtls = {},
+				-- java_language_server ={
+				-- 	lsc_server_commands =
+				--
+				-- }
 				--
 
 				lua_ls = {
@@ -215,6 +230,60 @@ return {
 						-- certain features of an LSP (for example, turning off formatting for ts_ls)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
+					end,
+					jdtls = function()
+						require("java").setup({
+							-- Your custom jdtls settings goes here
+							settings = {
+								java = {
+									configuration = {
+										runtimes = {
+											{
+												name = "JavaSE-23",
+												path = "/usr/local/sdkman/candidates/java/23-tem",
+											},
+											{
+												name = "JavaSE-21",
+												path = "/usr/local/sdkman/candidates/java/21-tem",
+												default = true,
+											},
+										},
+									},
+								},
+							},
+						})
+
+						require("lspconfig").jdtls.setup({
+							-- Your custom nvim-java configuration goes here
+							root_markers = {
+								"settings.gradle",
+								--   "settings.gradle.kts",
+								--   "pom.xml",
+								-- "build.gradle",
+								--   "mvnw",
+								--   "gradlew",
+								"build.gradle",
+								--   "build.gradle.kts",
+							},
+							jdtls = {
+								version = "v1.43.0",
+							},
+							lombok = {
+								version = "nightly",
+							},
+							jdk = {
+								-- install jdk using mason.nvim
+								auto_install = true,
+								version = "21.0.6",
+							},
+							mason = {
+								-- These mason registries will be prepended to the existing mason
+								-- configuration
+								registries = {
+									"github:nvim-java/mason-registry",
+								},
+							},
+						})
 					end,
 				},
 			})
