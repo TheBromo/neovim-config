@@ -33,7 +33,6 @@ require("lazy").setup({
 	require("custom.plugins.undotree"),
 	require("custom.plugins.obsidian"),
 	require("custom.plugins.treesitter"),
-	require("custom.plugins.sessions"),
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
