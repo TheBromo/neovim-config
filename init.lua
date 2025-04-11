@@ -24,6 +24,7 @@ require("lazy").setup({
 	require("custom.plugins.completions"),
 	require("custom.plugins.autoformat"),
 	require("custom.plugins.colorscheme"),
+	require("custom.plugins.gitsigns"),
 	require("custom.plugins.autopairs"),
 	require("custom.plugins.mini"),
 	require("custom.plugins.nvimtree"),

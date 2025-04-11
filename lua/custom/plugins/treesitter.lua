@@ -23,6 +23,7 @@ return {
 			highlight = {
 				enable = true,
 			},
+			indent = { enable = true, disable = { "ruby" } },
 		},
 	},
 	{
@@ -30,6 +31,8 @@ return {
 		config = function()
 			require("treesitter-context").setup({
 				enable = true,
+				max_lines = 4,
+				separator = "─",
 			})
 		end,
 	},
