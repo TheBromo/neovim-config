@@ -1,4 +1,4 @@
-local lombok_jar = "$HOME/Development/lombok.jar"
+local lombok_jar = "$HOME/Downloads/lombok.jar"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = "$HOME/.local/state/nvim/jdtls-cache/" .. project_name
@@ -21,7 +21,7 @@ local config = {
 		"-jar",
 		"$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar",
 		"-configuration",
-		"$HOME/.local/share/nvim/mason/packages/jdtls/config_linux",
+		"$HOME/.local/share/nvim/mason/packages/jdtls/config_mac_arm",
 		"-data",
 		workspace_dir,
 	},
