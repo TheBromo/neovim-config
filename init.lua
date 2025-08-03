@@ -18,8 +18,10 @@ require("custom.options")
 require("custom.mappings")
 
 require("lazy").setup({
-	{ "tpope/vim-sleuth" },
+	"NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+
 	require("custom.plugins.telescope"),
+	require("custom.plugins.fff"),
 	require("custom.plugins.lsp"),
 	require("custom.plugins.completions"),
 	require("custom.plugins.autoformat"),

@@ -1,4 +1,4 @@
-local lombok_jar = "$HOME/Downloads/lombok.jar"
+local lombok_jar = "/Users/manuel/Development/lombok/lombok.jar"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = "$HOME/.local/state/nvim/jdtls-cache/" .. project_name

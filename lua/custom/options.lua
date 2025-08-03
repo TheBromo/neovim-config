@@ -89,6 +89,6 @@ vim.o.background = "dark"
 -- extend comment when hitting ENTER in insert mode
 vim.opt.formatoptions:append("r")
 
-vim.opt.shell = "/usr/bin/zsh"
+vim.opt.shell = "zsh"
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
