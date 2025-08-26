@@ -7,7 +7,7 @@ return {
 	},
 	keys = {
 		{
-			"ff",
+			"<leader>sf",
 			function()
 				require("fff").find_files()
 			end,

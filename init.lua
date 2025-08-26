@@ -18,7 +18,13 @@ require("custom.options")
 require("custom.mappings")
 
 require("lazy").setup({
-	"NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+	{
+		"NMAC427/guess-indent.nvim",
+		lazy = false,
+		config = function()
+			require("guess-indent").setup({})
+		end,
+	},
 
 	require("custom.plugins.telescope"),
 	require("custom.plugins.fff"),
