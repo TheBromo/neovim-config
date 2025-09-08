@@ -59,7 +59,7 @@ return {
 			},
 
 			clues = {
-				{ mode = "n", keys = "<Leader>a", desc = "H[A]rpoon" },
+				-- { mode = "n", keys = "<Leader>a", desc = "H[A]rpoon" },
 				{ mode = "n", keys = "<Leader>c", desc = "[C]ode" },
 				{ mode = "n", keys = "<Leader>d", desc = "[D]ocument" },
 				{ mode = "n", keys = "<Leader>r", desc = "[R]ename" },
@@ -90,7 +90,7 @@ return {
 		--  and try some other statusline plugin
 		local statusline = require("mini.statusline")
 		-- set use_icons to true if you have a Nerd Font
-		statusline.setup({ use_icons = vim.g.have_nerd_font })
+		statusline.setup({ use_icons = false })
 
 		-- You can configure sections in the statusline by overriding their
 		-- default behavior. For example, here we set the section for

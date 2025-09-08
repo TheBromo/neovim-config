@@ -47,7 +47,6 @@ require("lazy").setup({
 	require("plugins.obsidian"),
 	require("plugins.treesitter"),
 }, {
-	-- defaults = { lazy = true, },
 	performance = {
 		rtp = {
 			reset = false,
