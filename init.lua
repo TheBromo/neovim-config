@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("custom.options")
 require("custom.mappings")
+require("custom.autocommands")
 
 require("lazy").setup({
 	{
@@ -26,19 +27,22 @@ require("lazy").setup({
 		end,
 	},
 
-	require("custom.plugins.telescope"),
+	require("custom.plugins.fzf"),
 	require("custom.plugins.fff"),
+
 	require("custom.plugins.lsp"),
 	require("custom.plugins.completions"),
 	require("custom.plugins.autoformat"),
+	require("custom.plugins.autopairs"),
+
 	require("custom.plugins.colorscheme"),
 	require("custom.plugins.gitsigns"),
-	require("custom.plugins.autopairs"),
+
 	require("custom.plugins.mini"),
 	require("custom.plugins.nvimtree"),
 	require("custom.plugins.oil"),
 	require("custom.plugins.tmux"),
-	-- require("custom.plugins.harpoon"),
+
 	require("custom.plugins.undotree"),
 	require("custom.plugins.obsidian"),
 	require("custom.plugins.treesitter"),
