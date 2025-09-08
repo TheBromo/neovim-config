@@ -31,13 +31,11 @@ return {
 			}
 		end,
 		formatters_by_ft = {
-			nix = { "alejandra" },
+			nix = { "nixfmt" },
 			lua = { "stylua" },
 			python = { "isort", "black" },
-			rust = { "rustfmt", lsp_format = "fallback" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
-
 			go = { "gofmt" },
 		},
 	},

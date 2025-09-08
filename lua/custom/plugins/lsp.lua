@@ -17,13 +17,12 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = {},
-			},
-			"mfussenegger/nvim-jdtls",
-			{ "mason-org/mason-lspconfig.nvim" },
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			-- {
+			-- 	"mason-org/mason.nvim",
+			-- 	opts = {},
+			-- },
+			-- { "mason-org/mason-lspconfig.nvim" },
+			-- "WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -184,7 +183,7 @@ return {
 						},
 					},
 				},
-				-- pyright = {},
+				ty = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -193,12 +192,9 @@ return {
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				ts_ls = {},
-				-- java_language_server ={
-				-- 	lsc_server_commands =
-				--
-				-- }
-				--
-				jdtls = {},
+				yamlls = {},
+				tailwindcss = {},
+				nil_ls = {},
 
 				lua_ls = {
 					settings = {
@@ -238,7 +234,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			-- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		end,
 	},
 }
