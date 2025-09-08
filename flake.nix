@@ -1,115 +1,83 @@
 {
-  description = "My neovim config";
+  description = "thebromo's neovim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    neovim-src = {
+      url = "github:neovim/neovim";
+      flake = false;
+    };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        neovim-src.follows = "neovim-src";
+      };
+    };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      # Import nixpkgs with specific system
-      pkgs = import nixpkgs {
-        inherit system; # Change this according to your system architecture
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      neovim-nightly,
+      ...
+    }:
+    let
+      systems = builtins.attrNames neovim-nightly.packages;
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+    in
+    {
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          config = pkgs.runCommand "neovim-config" { } "cp -r ${./.} $out/";
 
-      # The list of dependencies
-      runtimeDeps = [
-        pkgs.stdenv.cc
-        pkgs.cargo
-        pkgs.curl
-        pkgs.fd
-        pkgs.fzf
-        pkgs.git
-        pkgs.gnumake
-        pkgs.gnused
-        pkgs.gnutar
-        pkgs.gzip
-        pkgs.wget
-        pkgs.ripgrep
-        pkgs.tree-sitter
-        pkgs.unzip
-        pkgs.nodejs
-        pkgs.python3
-        pkgs.neovim-node-client
+          default = pkgs.callPackage ./nix/distribution.nix {
+            neovim-unwrapped = neovim-nightly.packages.${system}.default.overrideAttrs (
+              final: prev: { treesitter-parsers = { }; }
+            );
 
-        #lsp's
-        pkgs.lua-language-server
-        pkgs.nixd
-        pkgs.nodePackages.typescript-language-server
-        pkgs.typescript
-        pkgs.vscode-langservers-extracted
-        pkgs.yaml-language-server
-        pkgs.gopls
-        pkgs.tailwindcss-language-server
-        # pkgs.kotlin-language-server
+            custom-config = self.packages.${system}.config;
 
-        pkgs.neovim
+            preinstalled-lsp = with pkgs; [
+              #nix
+              nixfmt-rfc-style
+              nixd
+              #web
+              typescript-language-server
+              prettierd
+              tailwindcss-language-server
+              #python
+              ty
+              ruff
+              #kubernetes
+              kube-linter
+              yamlfmt
+              yaml-language-server
+              #neovim
+              lua-language-server
+              #cpp
+              llvmPackages_21.clang-tools
 
-        pkgs.lua
-        pkgs.luajitPackages.luarocks-nix
-      ];
-    in {
-      # Define the default package
-      packages = {
-        default = pkgs.stdenv.mkDerivation {
-          pname = "nvim";
-          version = "1.0.2";
-          src = ./.;
-          dontUseCmakeConfigure = true;
-
-          nativeBuildInputs = [
-            pkgs.gnused
-            pkgs.makeWrapper
-          ];
-
-          buildInputs = runtimeDeps;
-
-          buildPhase = ''
-            runHook preBuild
-
-            mkdir -p share/nvim
-            cp init.lua  share/nvim
-            cp -r lua share/nvim
-
-            mkdir bin
-            cp utils/bin/nvim.template bin/nvim
-            chmod +x bin/nvim
-
-            substituteInPlace bin/nvim \
-               --replace RUNTIME_DIR_VAR \$HOME/.local/share/nvim \
-               --replace CONFIG_DIR_VAR \$HOME/.config/nvim \
-               --replace CACHE_DIR_VAR \$HOME/.cache/nvim \
-               --replace BASE_DIR_VAR $out/share/nvim \
-               --replace neovim-binary ${pkgs.neovim}/bin/nvim
-
-            runHook postBuild
-          '';
-
-          installPhase = ''
-            runHook preInstall
-
-            mkdir -p $out
-            cp -r bin share $out
-
-            wrapProgram $out/bin/nvim --prefix PATH : ${pkgs.lib.makeBinPath runtimeDeps} \
-              --prefix LD_LIBRARY_PATH : ${pkgs.stdenv.cc.cc.lib} \
-              --prefix CC : ${pkgs.stdenv.cc.targetPrefix}cc
-
-            runHook postInstall
-          '';
-
-          meta = with pkgs.lib; {
-            description = "My personal IDE layer for Neovim";
-            homepage = "https://www.strenge.ch/";
-            platforms = platforms.unix;
-            mainProgram = "nvim";
+              gopls
+              terraform-ls
+              vscode-langservers-extracted
+            ];
           };
+        }
+      );
+
+      apps = forAllSystems (system: {
+        default = {
+          type = "app";
+          program = "${self.packages.${system}.default}/bin/nvim";
         };
-      };
-    });
+      });
+
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+    };
 }

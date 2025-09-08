@@ -14,9 +14,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("custom.options")
-require("custom.mappings")
-require("custom.autocommands")
+require("options")
+require("mappings")
+require("autocommands")
 
 require("lazy").setup({
 	{
@@ -27,26 +27,32 @@ require("lazy").setup({
 		end,
 	},
 
-	require("custom.plugins.fzf"),
-	require("custom.plugins.fff"),
+	require("plugins.fzf"),
+	require("plugins.fff"),
 
-	require("custom.plugins.lsp"),
-	require("custom.plugins.completions"),
-	require("custom.plugins.autoformat"),
-	require("custom.plugins.autopairs"),
+	require("plugins.lsp"),
+	require("plugins.completions"),
+	require("plugins.autoformat"),
+	require("plugins.autopairs"),
 
-	require("custom.plugins.colorscheme"),
-	require("custom.plugins.gitsigns"),
+	require("plugins.colorscheme"),
+	require("plugins.gitsigns"),
 
-	require("custom.plugins.mini"),
-	require("custom.plugins.nvimtree"),
-	require("custom.plugins.oil"),
-	require("custom.plugins.tmux"),
+	require("plugins.mini"),
+	require("plugins.nvimtree"),
+	require("plugins.oil"),
+	require("plugins.tmux"),
 
-	require("custom.plugins.undotree"),
-	require("custom.plugins.obsidian"),
-	require("custom.plugins.treesitter"),
+	require("plugins.undotree"),
+	require("plugins.obsidian"),
+	require("plugins.treesitter"),
 }, {
+	defaults = { lazy = true, },
+	performance = {
+		rtp = {
+			reset = false,
+		},
+	},
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
 			cmd = "⌘",

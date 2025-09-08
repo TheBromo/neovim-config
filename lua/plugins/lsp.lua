@@ -50,9 +50,13 @@ return {
 				ty = {},
 				ts_ls = {},
 				terraformls = {},
+				html = {},
+				cssls = {},
+				eslint = {},
 				yamlls = {},
+				jsonls = {},
 				tailwindcss = {},
-				nil_ls = {},
+				nixd = {},
 				lua_ls = {
 					settings = {
 						Lua = {
