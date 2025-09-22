@@ -46,6 +46,7 @@ require("lazy").setup({
 	require("plugins.undotree"),
 	require("plugins.obsidian"),
 	require("plugins.treesitter"),
+	require("plugins.todo")
 }, {
 	performance = {
 		rtp = {
