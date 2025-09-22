@@ -1,5 +1,5 @@
 return {
-	"echasnovski/mini.nvim",
+	"nvim-mini/mini.nvim",
 	dependencies = {},
 	config = function()
 		-- Better Around/Inside textobjects

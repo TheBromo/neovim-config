@@ -36,7 +36,9 @@ return {
 				},
 			})
 			local lsps = {
-				clangd = {},
+				clangd = {
+
+				},
 				gopls = {
 					settings = {
 						gopls = {
@@ -53,7 +55,9 @@ return {
 				html = {},
 				cssls = {},
 				eslint = {},
-				yamlls = {},
+				yamlls = {
+					filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" }
+				},
 				jsonls = {},
 				tailwindcss = {},
 				nixd = {},

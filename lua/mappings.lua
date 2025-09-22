@@ -14,7 +14,7 @@ vim.keymap.set("n", "\\", "<cmd>NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("n", "gK", function()
+vim.keymap.set("n", "<leader>tv", function()
 	local new_config = not vim.diagnostic.config().virtual_lines
 	vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Toggle diagnostic virtual_lines" })

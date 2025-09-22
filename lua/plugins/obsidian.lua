@@ -24,16 +24,16 @@ return {
 		"ObsidianPasteImg",
 	},
 	keys = {
-		{ "<leader>nt", "<cmd>ObsidianToday<cr>", desc = "[N]otes open [T]oday" },
+		{ "<leader>nt", "<cmd>ObsidianToday<cr>",       desc = "[N]otes open [T]oday" },
 		{ "<leader>nn", "<cmd>ObsidianQuickSwitch<cr>", desc = "[N]otes switch" },
-		{ "<leader>ns", "<cmd>ObsidianSearch<cr>", desc = "[N]otes text [S]earch" },
+		{ "<leader>ns", "<cmd>ObsidianSearch<cr>",      desc = "[N]otes text [S]earch" },
 	},
 
 	dependencies = {
 		-- Required.
 		"nvim-lua/plenary.nvim",
-		"hrsh7th/nvim-cmp",
-		"nvim-telescope/telescope.nvim",
+		"Saghen/blink.cmp",
+		"ibhagwan/fzf-lua"
 	},
 	opts = {
 		workspaces = {
