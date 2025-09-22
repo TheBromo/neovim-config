@@ -16,7 +16,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local fzf = require("fzf-lua")
 
         map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-        map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+        map("gra", function()
+            require("fzf-lua").lsp_code_actions({
+                winopts = { preview = { hidden = false } },
+            })
+        end, "[G]oto Code [A]ction", { "n", "x" })
         map("grr", fzf.lsp_references, "[G]oto [R]eferences")
         map("gri", fzf.lsp_implementations, "[G]oto [I]mplementation")
         map("grd", fzf.lsp_definitions, "[G]oto [D]efinition")
