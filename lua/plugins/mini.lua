@@ -99,5 +99,22 @@ return {
 		statusline.section_location = function()
 			return "%2l:%-2v"
 		end
+		require('mini.sessions').setup({
+			autoread = true
+
+		})
 	end,
+	-- MiniSession keymaps
+	vim.keymap.set('n', '<Leader>ss', "<CMD>lua MiniSessions.select('write')<CR>",
+		{ desc = '[S]ession [S]ave (choose existing session to overwrite)' }),
+
+	vim.keymap.set('n', '<Leader>sa', ":lua MiniSessions.write('')<Left><Left>",
+		{ desc = '[S]ession [A]dd (save as a new session)' }),
+
+	vim.keymap.set('n', '<Leader>so', "<CMD>lua MiniSessions.select('read')<CR>",
+		{ desc = '[S]ession [O]pen (restore a session)' }),
+
+	vim.keymap.set('n', '<Leader>sx', "<CMD>lua MiniSessions.select('delete')<CR>",
+		{ desc = '[S]ession [X] (delete a session)' })
+
 }

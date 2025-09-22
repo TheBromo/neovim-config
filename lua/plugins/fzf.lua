@@ -66,5 +66,18 @@ return {
             })
         end
         vim.api.nvim_create_user_command("Theme", select_theme, {})
+
+        vim.ui.select = function(items, opts, on_choice)
+            require("fzf-lua").fzf_exec(items, {
+                prompt = (opts.prompt or "") .. "> ",
+                actions = {
+                    ["default"] = function(selected)
+                        if selected[1] then
+                            on_choice(selected[1], selected[1])
+                        end
+                    end,
+                },
+            })
+        end
     end,
 }
