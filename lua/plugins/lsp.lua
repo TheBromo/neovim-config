@@ -50,6 +50,7 @@ return {
 					},
 				},
 				ty = {},
+				basedpyright = {},
 				ts_ls = {},
 				terraformls = {},
 				html = {},
