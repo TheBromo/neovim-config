@@ -28,6 +28,7 @@ require("lazy").setup({
 	},
 
 	require("plugins.fzf"),
+	-- require("plugins.telescope"),
 	require("plugins.fff"),
 
 	require("plugins.lsp"),

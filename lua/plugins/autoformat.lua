@@ -33,7 +33,7 @@ return {
 		formatters_by_ft = {
 			nix = { "nixfmt" },
 			lua = { "stylua" },
-			python = { "isort", "black" },
+			python = { "ruff" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			go = { "gofmt" },

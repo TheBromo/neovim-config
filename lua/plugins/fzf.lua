@@ -4,27 +4,13 @@ return {
     config = function()
         local fzf = require("fzf-lua")
 
-        fzf.setup({
-            fzf_opts = {
-                ["--layout"] = "default", -- this flips the order so prompt is at bottom
-            },
-            winopts = {
-                border = "single",
-                preview = {
-                    layout = "horizontal", -- or "horizontal", "flex"
-                },
-            },
-            files = {
-                -- ignore patterns similar to telescope’s
-                fd_opts =
-                [[--color=never --type f --hidden --follow --exclude .git --exclude node_modules --exclude build]],
-            },
+        fzf.setup({ "telescope", {}
         })
 
         -- keymaps (mirroring your telescope setup)
         vim.keymap.set("n", "<leader>sh", fzf.help_tags, { desc = "[s]earch [h]elp" })
         vim.keymap.set("n", "<leader>sw", fzf.grep_cword, { desc = "[s]earch current [w]ord" })
-        vim.keymap.set("n", "<leader>sg", fzf.live_grep, { desc = "[s]earch by [g]rep" })
+        vim.keymap.set("n", "<leader>sg", fzf.live_grep_native, { desc = "[s]earch by [g]rep" })
         vim.keymap.set("n", "<leader>sd", fzf.diagnostics_document, { desc = "[s]earch [d]iagnostics" })
         vim.keymap.set("n", "<leader>sr", fzf.resume, { desc = "[s]earch [r]esume" })
         vim.keymap.set("n", "<leader>s.", fzf.oldfiles, { desc = '[s]earch recent files ("." for repeat)' })

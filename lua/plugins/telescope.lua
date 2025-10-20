@@ -26,7 +26,18 @@ return {
 					".git",
 					"build",
 				},
-				-- other configuration options
+
+				additional_args = function(_)
+					return { "--hidden" }
+				end
+			},
+			pickers = {
+				live_grep = {
+					file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+					additional_args = function(_)
+						return { "--hidden" }
+					end
+				},
 			},
 
 			extensions = {
@@ -124,6 +135,6 @@ return {
 				})
 				:find()
 		end
-		vim.api.nvim_create_user_command("theme", select_theme, {})
+		vim.api.nvim_create_user_command("Theme", select_theme, {})
 	end,
 }
