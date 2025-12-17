@@ -48,7 +48,8 @@ require("lazy").setup({
 	require("plugins.obsidian"),
 	require("plugins.treesitter"),
 	require("plugins.todo"),
-	require("plugins.fugitive")
+	require("plugins.fugitive"),
+	require("plugins.unused.harpoon")
 }, {
 	performance = {
 		rtp = {
