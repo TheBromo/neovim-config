@@ -1,20 +1,24 @@
+-- Leader key configuration
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- Clear search highlights
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
+-- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("n", "\\", "<cmd>NvimTreeToggle<CR>")
-
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+-- Terminal
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+vim.keymap.set("n", "\\", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+
+
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("n", "<leader>tv", function()
 	local new_config = not vim.diagnostic.config().virtual_lines
 	vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = "Toggle diagnostic virtual_lines" })
+end, { desc = "[T]oggle diagnostic [V]irtual lines" })

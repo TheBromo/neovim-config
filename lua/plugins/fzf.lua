@@ -17,35 +17,16 @@ return {
         vim.keymap.set("n", "<leader><leader>", fzf.buffers, { desc = "[ ] find existing buffers" })
 
         -- Theme picker (using fzf-lua instead of telescope)
-        local themes = {
-            "monokai-pro",
-            "mountain",
-            "nightlamp",
-            "sonokai-pro",
-            "moonfly",
-            "midnight-desert",
-            "ayu",
-            "noctis",
-            "fusion",
-            "deviuspro",
-            "gruvbox",
-            "brightburn",
-            "kanagawa",
-            "light",
-            "vercel",
-            "vesper",
-            "none",
-        }
+        local theme_utils = require("theme_utils")
 
         local function select_theme()
-            fzf.fzf_exec(themes, {
+            fzf.fzf_exec(theme_utils.themes, {
                 prompt = "select theme> ",
                 actions = {
                     ["default"] = function(selected)
                         local theme = selected[1]
                         if theme then
-                            vim.fn.writefile({ theme }, vim.fn.stdpath("config") .. "/.nvim_theme")
-                            vim.notify("restart to see " .. theme .. " theme", vim.log.levels.INFO)
+                            theme_utils.save_theme(theme)
                         end
                     end,
                 },

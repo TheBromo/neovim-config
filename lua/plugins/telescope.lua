@@ -81,25 +81,7 @@ return {
 			})
 		end, { desc = "[s]earch [/] in open files" })
 
-		local themes = {
-			"monokai-pro",
-			"mountain",
-			"nightlamp",
-			"sonokai-pro",
-			"moonfly",
-			"midnight-desert",
-			"ayu",
-			"noctis",
-			"fusion",
-			"deviuspro",
-			"gruvbox",
-			"brightburn",
-			"kanagawa",
-			"light",
-			"vercel",
-			"vesper",
-			"none",
-		}
+		local theme_utils = require("theme_utils")
 
 		local function select_theme()
 			local actions = require("telescope.actions")
@@ -112,7 +94,7 @@ return {
 				.new({}, {
 					prompt_title = "select theme",
 					finder = finders.new_table({
-						results = themes,
+						results = theme_utils.themes,
 					}),
 					sorter = conf.generic_sorter({}),
 					attach_mappings = function(prompt_bufnr, map)
@@ -120,7 +102,7 @@ return {
 							local selection = action_state.get_selected_entry()
 							if selection then
 								local theme = selection[1]
-								vim.fn.writefile({ theme }, vim.fn.stdpath("config") .. "/.nvim_theme")
+								theme_utils.save_theme(theme)
 								actions.close(prompt_bufnr)
 
 								vim.print("restart to see " .. theme .. " theme")

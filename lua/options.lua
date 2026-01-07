@@ -14,8 +14,6 @@ vim.o.breakindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.termguicolors = true
-
 vim.opt.signcolumn = "yes"
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -40,7 +38,6 @@ vim.opt.showmode = false
 -- line handling
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 

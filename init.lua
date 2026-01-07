@@ -43,6 +43,7 @@ require("lazy").setup({
 	require("plugins.nvimtree"),
 	require("plugins.oil"),
 	require("plugins.tmux"),
+	require("plugins.unused.harpoon"),
 
 	require("plugins.undotree"),
 	require("plugins.obsidian"),

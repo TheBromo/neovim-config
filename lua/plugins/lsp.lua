@@ -56,6 +56,10 @@ return {
 				html = {},
 				cssls = {},
 				eslint = {},
+				-- solidity_ls = {},
+				-- solc = {},
+				solidity = {},
+				-- solidity_ls_nomicfoundation = {},
 				yamlls = {
 					filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" }
 				},
@@ -65,6 +69,11 @@ return {
 				lua_ls = {
 					settings = {
 						Lua = {
+							workspace = {
+								-- Path to your Addons directory
+								userThirdParty = { os.getenv("HOME") .. ".local/share/LuaAddons" },
+								checkThirdParty = "Apply"
+							},
 							completion = {
 								callSnippet = "Replace",
 							},
