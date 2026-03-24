@@ -24,6 +24,7 @@ return {
 			auto_install = true,
 			highlight = {
 				enable = true,
+				disable = { "markdown", "markdown_inline" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},

@@ -10,16 +10,26 @@ local themes = {
 		config = function()
 			require("monokai-pro").setup({
 				terminal_colors = true,
+				transparent_background = true,
 				filter = "pro",
 				devicons = false, -- vim.g.have_nerd_font,
-				background_clear = {
-					"float_win",
-					"telescope",
-				},
-				overridePalette = function(_)
+
+				override_palette = function(filter)
 					return {
 						dark1 = "#121212",
 						background = "#080808",
+						-- text = "#C0CAF5",
+						-- accent1 = "#f7768e",
+						-- accent2 = "#7aa2f7",
+						-- accent3 = "#e0af68",
+						-- accent4 = "#9ece6a",
+						-- accent5 = "#0DB9D7",
+						-- accent6 = "#9d7cd8",
+						-- dimmed1 = "#737aa2",
+						-- dimmed2 = "#787c99",
+						-- dimmed3 = "#363b54",
+						-- dimmed4 = "#363b54",
+						-- dimmed5 = "#16161e",
 					}
 				end,
 			})
