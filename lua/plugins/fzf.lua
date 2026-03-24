@@ -9,12 +9,11 @@ return {
 
         -- keymaps (mirroring your telescope setup)
         vim.keymap.set("n", "<leader>sh", fzf.help_tags, { desc = "[s]earch [h]elp" })
-        vim.keymap.set("n", "<leader>sw", fzf.grep_cword, { desc = "[s]earch current [w]ord" })
-        vim.keymap.set("n", "<leader>sg", fzf.live_grep_native, { desc = "[s]earch by [g]rep" })
+        -- <leader>sw and <leader>sg moved to fff.nvim
         vim.keymap.set("n", "<leader>sd", fzf.diagnostics_document, { desc = "[s]earch [d]iagnostics" })
-        vim.keymap.set("n", "<leader>sr", fzf.resume, { desc = "[s]earch [r]esume" })
-        vim.keymap.set("n", "<leader>s.", fzf.oldfiles, { desc = '[s]earch recent files ("." for repeat)' })
-        vim.keymap.set("n", "<leader><leader>", fzf.buffers, { desc = "[ ] find existing buffers" })
+        -- vim.keymap.set("n", "<leader>sr", fzf.resume, { desc = "[s]earch [r]esume" })
+        -- vim.keymap.set("n", "<leader>s.", fzf.oldfiles, { desc = '[s]earch recent files ("." for repeat)' })
+        -- vim.keymap.set("n", "<leader><leader>", fzf.buffers, { desc = "[ ] find existing buffers" })
 
         -- Theme picker (using fzf-lua instead of telescope)
         local theme_utils = require("theme_utils")
