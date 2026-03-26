@@ -8,6 +8,7 @@ return {
 	build = "nix run .#release",
 	lazy = false,
 	opts = {
+		prompt = '🦖 '
 	},
 	keys = {
 		{
