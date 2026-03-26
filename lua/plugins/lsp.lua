@@ -50,22 +50,21 @@ return {
 					},
 				},
 				ty = {},
-				basedpyright = {},
+				pyright = {},
+
 				ts_ls = {},
-				terraformls = {},
 				html = {},
 				cssls = {},
 				eslint = {},
-				-- solidity_ls = {},
-				-- solc = {},
-				solidity = {},
-				-- solidity_ls_nomicfoundation = {},
+				jsonls = {},
+				tailwindcss = {},
+
+				nil_ls = {},
+				terraformls = {},
 				yamlls = {
 					filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" }
 				},
-				jsonls = {},
-				tailwindcss = {},
-				nixd = {},
+
 				lua_ls = {
 					settings = {
 						Lua = {
