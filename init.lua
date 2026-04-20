@@ -1,78 +1,51 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
-
 require("options")
 require("mappings")
 require("autocommands")
 
-require("lazy").setup({
-	{
-		"NMAC427/guess-indent.nvim",
-		lazy = false,
-		config = function()
-			require("guess-indent").setup({})
-		end,
-	},
-
-	require("plugins.fzf"),
-	-- require("plugins.telescope"),
-	require("plugins.fff"),
-
-	require("plugins.lsp"),
-	require("plugins.completions"),
-	require("plugins.autoformat"),
-	require("plugins.autopairs"),
-
-	require("plugins.colorscheme"),
-	require("plugins.gitsigns"),
-
-	require("plugins.mini"),
-	require("plugins.nvimtree"),
-	require("plugins.oil"),
-	require("plugins.tmux"),
-	require("plugins.unused.harpoon"),
-
-	require("plugins.undotree"),
-	-- require("plugins.unused.obsidian"),
-	require("plugins.treesitter"),
-	require("plugins.todo"),
-	require("plugins.fugitive"),
-	-- require("plugins.unused.harpoon"),
-	-- require("plugins.opencode")
-}, {
-	performance = {
-		rtp = {
-			reset = false,
-		},
-	},
-	ui = {
-		icons = vim.g.have_nerd_font and {} or {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
-	},
+local plugin_modules = {
+	"plugins.guess_indent",
+	"plugins.fzf",
+	"plugins.fff",
+	"plugins.lsp",
+	"plugins.completions",
+	"plugins.autoformat",
+	"plugins.autopairs",
+	"plugins.colorscheme",
+	"plugins.gitsigns",
+	"plugins.mini",
+	"plugins.nvimtree",
+	"plugins.oil",
+	"plugins.tmux",
+	"plugins.unused.harpoon",
+	"plugins.undotree",
+	"plugins.treesitter",
+	"plugins.todo",
+	"plugins.fugitive",
+}
+-- INFO:
+-- update :lua vim.pack.update()
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind, path = ev.data.spec.name, ev.data.kind, ev.data.path
+		if kind ~= "install" and kind ~= "update" then return end
+		if name == "fff.nvim" then
+			vim.system({ "nix", "run", ".#release" }, { cwd = path }):wait()
+		end
+	end,
 })
+
+local modules = {}
+local all_specs = {}
+for _, mod in ipairs(plugin_modules) do
+	local ok, m = pcall(require, mod)
+	if ok and m and m.specs then
+		vim.list_extend(all_specs, m.specs)
+		table.insert(modules, m)
+	end
+end
+
+vim.pack.add(all_specs, { load = true })
+
+for _, m in ipairs(modules) do
+	if m.setup then m.setup() end
+end

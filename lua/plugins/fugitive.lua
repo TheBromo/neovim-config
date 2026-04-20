@@ -1,3 +1,4 @@
 return {
-    "tpope/vim-fugitive"
+	specs = { "https://github.com/tpope/vim-fugitive" },
+	setup = function() end,
 }

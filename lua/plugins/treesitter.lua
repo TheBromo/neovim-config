@@ -1,45 +1,37 @@
 return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ':TSUpdate',
-    branch = 'main',
-    config = function()
-      require('nvim-treesitter').setup {
-        -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-        install_dir = vim.fn.stdpath('data') .. '/site'
-      }
+	specs = {
+		{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+		"https://github.com/nvim-treesitter/nvim-treesitter-context",
+	},
+	setup = function()
+		require("nvim-treesitter").setup({
+			install_dir = vim.fn.stdpath("data") .. "/site",
+		})
 
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim',
-        'vimdoc' }
-      require('nvim-treesitter').install(parsers)
+		local parsers = {
+			"bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline",
+			"query", "vim", "vimdoc",
+		}
+		require("nvim-treesitter").install(parsers)
 
-      vim.api.nvim_create_autocmd('FileType', {
-        callback = function(args)
-          local buf, filetype = args.buf, args.match
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(args)
+				local buf, filetype = args.buf, args.match
 
-          local language = vim.treesitter.language.get_lang(filetype)
-          if not language then return end
+				local language = vim.treesitter.language.get_lang(filetype)
+				if not language then return end
 
-          -- check if parser exists and load it
-          if not vim.treesitter.language.add(language) then return end
-          -- enables syntax highlighting and other treesitter features
-          vim.treesitter.start(buf, language)
+				if not vim.treesitter.language.add(language) then return end
+				vim.treesitter.start(buf, language)
 
-          -- enables treesitter based indentation
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end,
-      })
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup({
-        enable = true,
-        max_lines = 4,
-        separator = "─",
-      })
-    end,
-  },
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+
+		require("treesitter-context").setup({
+			enable = true,
+			max_lines = 4,
+			separator = "─",
+		})
+	end,
 }

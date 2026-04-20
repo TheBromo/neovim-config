@@ -1,11 +1,11 @@
 return {
-	"windwp/nvim-autopairs",
-	event = "InsertEnter",
-	-- Optional dependency
-	dependencies = { "hrsh7th/nvim-cmp", "windwp/nvim-ts-autotag" },
-	config = function()
+	specs = {
+		"https://github.com/windwp/nvim-autopairs",
+		"https://github.com/hrsh7th/nvim-cmp",
+		"https://github.com/windwp/nvim-ts-autotag",
+	},
+	setup = function()
 		require("nvim-autopairs").setup({})
-		-- If you want to automatically add `(` after selecting a function or method
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 		local cmp = require("cmp")
 
@@ -13,10 +13,9 @@ return {
 
 		require("nvim-ts-autotag").setup({
 			opts = {
-				-- Defaults
-				enable_close = true, -- Auto close tags
-				enable_rename = true, -- Auto rename pairs of tags
-				enable_close_on_slash = false, -- Auto close on trailing </
+				enable_close = true,
+				enable_rename = true,
+				enable_close_on_slash = false,
 			},
 		})
 	end,

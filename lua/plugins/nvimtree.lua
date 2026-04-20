@@ -1,11 +1,6 @@
 return {
-	"nvim-tree/nvim-tree.lua",
-	version = "*",
-	lazy = false,
-	dependencies = {
-		"echasnovski/mini.nvim",
-	},
-	config = function()
+	specs = { "https://github.com/nvim-tree/nvim-tree.lua" },
+	setup = function()
 		require("nvim-tree").setup({
 			hijack_netrw = false,
 			update_focused_file = {
@@ -66,7 +61,6 @@ return {
 					end
 				end
 				if 1 == #wins - #floating_wins - #tree_wins then
-					-- Should quit, so we close all invalid windows.
 					for _, w in ipairs(tree_wins) do
 						vim.api.nvim_win_close(w, true)
 					end

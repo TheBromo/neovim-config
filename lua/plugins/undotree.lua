@@ -1,7 +1,6 @@
 return {
-	"mbbill/undotree",
-	cmd = "UndotreeToggle",
-	keys = {
-		{ "<leader>du", "<cmd>UndotreeToggle<cr>", desc = "[D]ocument [U]ndotree" },
-	},
+	specs = { "https://github.com/mbbill/undotree" },
+	setup = function()
+		vim.keymap.set("n", "<leader>du", "<cmd>UndotreeToggle<cr>", { desc = "[D]ocument [U]ndotree" })
+	end,
 }
