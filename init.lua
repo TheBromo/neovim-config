@@ -31,6 +31,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
 		if name == "fff.nvim" then
 			vim.system({ "nix", "run", ".#release" }, { cwd = path }):wait()
 		end
+		if name == 'nvim-treesitter' then
+			if not ev.data.active then vim.cmd.packadd 'nvim-treesitter' end
+			vim.cmd 'TSUpdate'
+			return
+		end
 	end,
 })
 
