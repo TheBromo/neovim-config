@@ -45,7 +45,6 @@ return {
 				},
 			},
 			ty = {},
-			pyright = {},
 
 			ts_ls = {},
 			html = {},

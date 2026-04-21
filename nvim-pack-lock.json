@@ -10,7 +10,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "91545f832c3aa3b36e58088e44461a071a709699",
+      "rev": "464f9d8b858cf49c9d30dd7554c81a6c10aaf9df",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -22,7 +22,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "423533df25c6cbc0f908676760517662996437c7",
+      "rev": "beaa4e83e6be4174af291a464e4f49548c943963",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {

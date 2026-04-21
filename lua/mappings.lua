@@ -18,7 +18,7 @@ vim.keymap.set("n", "\\", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explo
 
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-vim.keymap.set("n", "<leader>tv", function()
-	local new_config = not vim.diagnostic.config().virtual_lines
-	vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = "[T]oggle diagnostic [V]irtual lines" })
+-- vim.keymap.set("n", "<leader>tv", function()
+-- 	local new_config = not vim.diagnostic.config().virtual_lines
+-- 	vim.diagnostic.config({ virtual_lines = new_config })
+-- end, { desc = "[T]oggle diagnostic [V]irtual lines" })
