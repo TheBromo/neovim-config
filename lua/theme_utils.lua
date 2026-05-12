@@ -13,6 +13,9 @@ M.themes = {
 	"fusion",
 	"deviuspro",
 	"gruvbox",
+	"catppuccin",
+	"tokyonight",
+	"cyberdream",
 	"brightburn",
 	"kanagawa",
 	"light",
@@ -44,4 +47,3 @@ M.save_theme = function(theme)
 end
 
 return M
-

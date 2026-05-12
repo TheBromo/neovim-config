@@ -91,6 +91,69 @@ local themes = {
 			vim.cmd([[colorscheme gruvbox]])
 		end,
 	},
+	["catppuccin"] = {
+		spec = { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+		setup = function()
+			require("catppuccin").setup({
+				integrations = {
+					cmp = true,
+					treesitter = true,
+					telescope = true,
+					notify = true,
+					gitsigns = true,
+					noice = true,
+					dap = true,
+					dap_ui = true,
+					nvimtree = true,
+					markdown = true,
+					mason = true,
+				},
+			})
+
+			local catppuccin = require("catppuccin.palettes.mocha")
+			vim.cmd.colorscheme("catppuccin")
+
+			vim.api.nvim_set_hl(0, "EdgyWinBar", { bg = catppuccin.mantle })
+			vim.api.nvim_set_hl(0, "EdgyNormal", { bg = catppuccin.mantle })
+			vim.api.nvim_set_hl(0, "LspInlayHint", { bg = catppuccin.base, fg = catppuccin.overlay0 })
+			vim.api.nvim_set_hl(0, "WinSeparator", { bg = catppuccin.mantle, fg = catppuccin.surface1 })
+			vim.api.nvim_set_hl(0, "TreesitterContextBottom", { sp = catppuccin.surface2, underline = false })
+			vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { sp = catppuccin.surface2, underline = false })
+		end,
+	},
+	["tokyonight"] = {
+		spec = "https://github.com/folke/tokyonight.nvim",
+		setup = function()
+			require("tokyonight").setup({
+				transparent = true,
+				styles = {
+					sidebars = "transparent",
+				},
+			})
+			vim.cmd("colorscheme tokyonight")
+		end,
+	},
+	["cyberdream"] = {
+		spec = "https://github.com/scottmckendry/cyberdream.nvim",
+		setup = function()
+			require("cyberdream").setup({
+				transparent = true,
+				borderless_pickers = false,
+				saturation = 0.95,
+				cache = true,
+			})
+
+			vim.cmd("colorscheme cyberdream")
+			vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
+			vim.api.nvim_set_hl(0, "TroubleNormalNC", { bg = "none", ctermbg = "none" })
+			vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#3c4048", bg = "none" })
+			vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#7b8496" })
+			vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#232429" })
+			vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#232429" })
+			vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#232429", underline = true })
+			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff" })
+		end,
+	},
 	["light"] = {
 		spec = { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 		setup = function()
@@ -134,7 +197,15 @@ if not selected then
 end
 
 local specs = selected.specs or { selected.spec }
+vim.list_extend(specs, { "https://github.com/xiyaowong/transparent.nvim" })
 return {
 	specs = specs,
-	setup = selected.setup,
+	setup = function()
+		selected.setup()
+
+		local ok, transparent = pcall(require, "transparent")
+		if ok then
+			transparent.setup({})
+		end
+	end,
 }
