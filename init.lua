@@ -7,6 +7,7 @@ local plugin_modules = {
 	"plugins.fzf",
 	"plugins.fff",
 	"plugins.lsp",
+	"plugins.dap",
 	"plugins.completions",
 	"plugins.autoformat",
 	"plugins.autopairs",
@@ -22,6 +23,7 @@ local plugin_modules = {
 	"plugins.todo",
 	"plugins.fugitive",
 }
+
 -- INFO:
 -- update :lua vim.pack.update()
 vim.api.nvim_create_autocmd("PackChanged", {

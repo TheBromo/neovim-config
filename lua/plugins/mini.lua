@@ -42,6 +42,7 @@ return {
 			clues = {
 				{ mode = "n", keys = "<Leader>c", desc = "[C]ode" },
 				{ mode = "n", keys = "<Leader>d", desc = "[D]ocument" },
+				{ mode = "n", keys = "<Leader>D", desc = "[D]ebug" },
 				{ mode = "n", keys = "<Leader>r", desc = "[R]ename" },
 				{ mode = "n", keys = "<Leader>s", desc = "[S]earch" },
 				{ mode = "n", keys = "<Leader>w", desc = "[W]orkspace" },
