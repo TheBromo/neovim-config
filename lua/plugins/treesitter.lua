@@ -8,12 +8,14 @@ return {
             install_dir = vim.fn.stdpath("data") .. "/site",
         })
 
-        local parsers = {
-            "terraform", "hcl", "yaml", "go", "tsx", "bash", "c", "diff", "html", "lua", "luadoc", "markdown",
-            "markdown_inline",
-            "query", "vim", "vimdoc",
-        }
-        require("nvim-treesitter").install(parsers)
+        -- NOTE: installed with nix
+        --
+        -- local parsers = {
+        --     "terraform", "hcl", "yaml", "go", "tsx", "bash", "c", "diff", "html", "lua", "luadoc", "markdown",
+        --     "markdown_inline",
+        --     "query", "vim", "vimdoc",
+        -- }
+        -- require("nvim-treesitter").install(parsers)
 
         vim.api.nvim_create_autocmd("FileType", {
             callback = function(args)

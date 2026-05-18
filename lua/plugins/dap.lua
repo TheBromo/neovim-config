@@ -85,6 +85,8 @@ return {
 	setup = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
+		require("dap-go").setup()
+
 
 		dapui.setup({
 			icons = { expanded = "▼", collapsed = "▶", current_frame = "*" },
@@ -122,11 +124,6 @@ return {
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-		require("dap-go").setup({
-			delve = {
-				detached = vim.fn.has("win32") == 0,
-			},
-		})
 
 		vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
 		vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
@@ -143,12 +140,7 @@ return {
 		vim.keymap.set("n", "<leader>Dl", dap.run_last, { desc = "[D]ebug run [L]ast" })
 		vim.keymap.set("n", "<leader>Dt", dap.terminate, { desc = "[D]ebug [T]erminate" })
 		vim.keymap.set("n", "<leader>Du", dapui.toggle, { desc = "[D]ebug toggle [U]I" })
-		vim.keymap.set("n", "<leader>Dg", function()
-			require("dap-go").debug_test()
-		end, { desc = "[D]ebug [G]o test" })
-		vim.keymap.set("n", "<leader>DG", function()
-			require("dap-go").debug_last_test()
-		end, { desc = "[D]ebug last [G]o test" })
+
 
 		vim.keymap.set("n", "<leader>bb", dap.toggle_breakpoint, { desc = "[B]reakpoint toggle" })
 		vim.keymap.set("n", "<leader>bB", function()
