@@ -57,6 +57,13 @@ return {
 			terraformls = {},
 			yamlls = {
 				filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
+				settings = {
+					yaml = {
+						customTags = {
+							"!reference sequence",
+						},
+					},
+				},
 			},
 
 			lua_ls = {
