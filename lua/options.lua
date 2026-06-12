@@ -63,11 +63,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.opt.conceallevel = 1
 
-vim.opt.shortmess = "IF"
+vim.opt.shortmess:append("I")
 vim.g.have_nerd_font = true
-
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- set update time for lsp hover
 vim.opt.updatetime = 250

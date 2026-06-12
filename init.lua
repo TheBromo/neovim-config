@@ -48,6 +48,8 @@ for _, mod in ipairs(plugin_modules) do
 	if ok and m and m.specs then
 		vim.list_extend(all_specs, m.specs)
 		table.insert(modules, m)
+	elseif not ok then
+		vim.notify("Failed to load " .. mod .. ": " .. tostring(m), vim.log.levels.WARN)
 	end
 end
 

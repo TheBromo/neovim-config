@@ -34,7 +34,10 @@ M.get_current_theme = function()
 	local theme_file = M.get_theme_file()
 	local theme = "monokai-pro" -- default
 	if vim.fn.filereadable(theme_file) == 1 then
-		theme = vim.fn.readfile(theme_file)[1]
+		local lines = vim.fn.readfile(theme_file)
+		if lines[1] and lines[1] ~= "" then
+			theme = lines[1]
+		end
 	end
 	return theme
 end

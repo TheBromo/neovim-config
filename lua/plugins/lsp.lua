@@ -56,7 +56,7 @@ return {
 			nil_ls = {},
 			terraformls = {},
 			yamlls = {
-				filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
+				filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
 				settings = {
 					yaml = {
 						customTags = {
@@ -70,7 +70,7 @@ return {
 				settings = {
 					Lua = {
 						workspace = {
-							userThirdParty = { os.getenv("HOME") .. ".local/share/LuaAddons" },
+							userThirdParty = { os.getenv("HOME") .. "/.local/share/LuaAddons" },
 							checkThirdParty = "Apply",
 						},
 						completion = {
