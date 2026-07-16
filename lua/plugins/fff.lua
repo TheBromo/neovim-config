@@ -8,15 +8,16 @@ return {
 		end, { desc = "FFFind FFFiles" })
 
 		vim.keymap.set("n", "<leader>sg", function()
-			require("fff").live_grep()
+			require("fff").live_grep({ prompt = "🦆 " })
 		end, { desc = "Live grep" })
 
 		vim.keymap.set("n", "<leader>sw", function()
-			require("fff").live_grep({ query = vim.fn.expand("<cword>") })
+			require("fff").live_grep({ prompt = "🦆 ", query = vim.fn.expand("<cword>") })
 		end, { desc = "Search current word" })
 
 		vim.keymap.set("n", "<leader>sz", function()
 			require("fff").live_grep({
+				prompt = "🦆 ",
 				grep = {
 					modes = { "fuzzy", "plain" },
 				},
