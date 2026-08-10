@@ -11,7 +11,13 @@ return {
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
 			},
 		})
-		require("fidget").setup({})
+		require("fidget").setup({
+			notification = {
+				window = {
+					avoid = { "NvimTree" },
+				},
+			},
+		})
 
 		vim.diagnostic.config({
 			severity_sort = true,
