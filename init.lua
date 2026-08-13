@@ -12,6 +12,7 @@ local plugin_modules = {
 	"plugins.autoformat",
 	"plugins.autopairs",
 	"plugins.colorscheme",
+	"plugins.indent_blankline",
 	"plugins.gitsigns",
 	"plugins.mini",
 	"plugins.nvimtree",
