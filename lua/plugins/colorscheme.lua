@@ -155,6 +155,7 @@ local themes = {
 
 			vim.cmd("colorscheme cyberdream")
 			vim.api.nvim_set_hl(0, "Cursor", { bg = "#c1c0c0", fg = "#8e8d8d" })
+			vim.api.nvim_set_hl(0, "CursorLine", { bg = context_bg })
 			vim.api.nvim_set_hl(0, "Visual", { bg = "#5b595c", fg = "#fcfcfa" })
 			vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
 			vim.api.nvim_set_hl(0, "TroubleNormalNC", { bg = "none", ctermbg = "none" })
