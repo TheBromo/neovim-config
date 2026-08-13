@@ -1,7 +1,7 @@
 return {
 	specs = { "https://github.com/dmtrKovalenko/fff.nvim" },
 	setup = function()
-		require("fff").setup({ prompt = "🦖 " })
+		require("fff").setup({ prompt = "🪿 " })
 
 		vim.keymap.set("n", "<leader>sf", function()
 			require("fff").find_files()

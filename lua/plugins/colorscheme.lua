@@ -136,22 +136,34 @@ local themes = {
 	["cyberdream"] = {
 		spec = "https://github.com/scottmckendry/cyberdream.nvim",
 		setup = function()
+			-- Compensate for the terminal renderer lifting this to roughly #1d1e20.
+			local context_bg = "#17191b"
+
 			require("cyberdream").setup({
 				transparent = true,
 				borderless_pickers = false,
 				saturation = 0.95,
 				cache = true,
+				colors = {
+					bg = "#080808",
+					bg_solid = "#080808",
+					bg_highlight = "#5b595c",
+					fg = "#fcfcfa",
+					grey = "#8e8d8d",
+				},
 			})
 
 			vim.cmd("colorscheme cyberdream")
+			vim.api.nvim_set_hl(0, "Cursor", { bg = "#c1c0c0", fg = "#8e8d8d" })
+			vim.api.nvim_set_hl(0, "Visual", { bg = "#5b595c", fg = "#fcfcfa" })
 			vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "none", ctermbg = "none" })
 			vim.api.nvim_set_hl(0, "TroubleNormalNC", { bg = "none", ctermbg = "none" })
 			vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#3c4048", bg = "none" })
 			vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#7b8496" })
-			vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#232429" })
-			vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#232429" })
-			vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#232429", underline = true })
-			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff" })
+			vim.api.nvim_set_hl(0, "TreesitterContext", { bg = context_bg })
+			vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = context_bg })
+			vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = context_bg, underline = true })
+			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#fcfcfa" })
 		end,
 	},
 	["light"] = {
