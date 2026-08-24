@@ -14,6 +14,24 @@ return {
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
 	config = function()
+		local function ripgrep_search_args()
+			return {
+				"--hidden",
+				"--glob",
+				"!**/.devenv",
+				"--glob",
+				"!**/.devenv/**",
+				"--glob",
+				"!**/.direnv",
+				"--glob",
+				"!**/.direnv/**",
+				"--glob",
+				"!**/node_modules",
+				"--glob",
+				"!**/node_modules/**",
+			}
+		end
+
 		require("telescope").setup({
 			defaults = {
 				borderchars = {
@@ -25,18 +43,16 @@ return {
 					"node_modules",
 					".git",
 					"build",
+					"%.devenv/",
+					"%.direnv/",
 				},
 
-				additional_args = function(_)
-					return { "--hidden" }
-				end
+				additional_args = ripgrep_search_args,
 			},
 			pickers = {
 				live_grep = {
-					file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-					additional_args = function(_)
-						return { "--hidden" }
-					end
+					file_ignore_patterns = { "node_modules", ".git", ".venv", "%.devenv/", "%.direnv/" },
+					additional_args = ripgrep_search_args,
 				},
 			},
 
