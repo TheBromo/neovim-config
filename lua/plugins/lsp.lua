@@ -85,6 +85,12 @@ return {
 					},
 				},
 			},
+			svls = {
+
+			},
+			verible = {
+
+			}
 		}
 
 		for name, config in pairs(lsps) do
