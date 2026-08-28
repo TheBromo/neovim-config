@@ -15,6 +15,7 @@ local plugin_modules = {
 	"plugins.indent_blankline",
 	"plugins.gitsigns",
 	"plugins.mini",
+	"plugins.herdr_navigation",
 	"plugins.nvimtree",
 	"plugins.oil",
 	"plugins.undotree",
