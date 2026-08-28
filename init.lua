@@ -17,8 +17,6 @@ local plugin_modules = {
 	"plugins.mini",
 	"plugins.nvimtree",
 	"plugins.oil",
-	"plugins.tmux",
-	"plugins.unused.harpoon",
 	"plugins.undotree",
 	"plugins.treesitter",
 	"plugins.todo",
