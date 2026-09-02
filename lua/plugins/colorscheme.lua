@@ -220,5 +220,14 @@ return {
 		if ok then
 			transparent.setup({})
 		end
+
+		-- Ghostty does not support terminal-native multicursors, so make
+		-- Neovim's static fallback cursors clearly visible across themes.
+		vim.api.nvim_set_hl(0, "MCursor", {
+			bg = "#ffbd5e",
+			fg = "#080808",
+			bold = true,
+		})
+		vim.api.nvim_set_hl(0, "MCursorVisual", { link = "Visual" })
 	end,
 }

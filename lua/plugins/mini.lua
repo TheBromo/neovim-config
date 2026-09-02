@@ -65,6 +65,10 @@ return {
 			},
 		})
 
+		-- mini.clue maps Q to the former "repeat latest macro" command. On
+		-- Neovim 0.13, Q is the native multicursor command, so restore it.
+		pcall(vim.keymap.del, "n", "Q")
+
 		local statusline = require("mini.statusline")
 		statusline.setup({ use_icons = false })
 
