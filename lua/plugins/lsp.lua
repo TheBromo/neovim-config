@@ -40,6 +40,7 @@ return {
 		})
 		local lsps = {
 			clangd = {},
+			rust_analyzer = {},
 			gopls = {
 				settings = {
 					gopls = {
@@ -58,11 +59,13 @@ return {
 			eslint = {},
 			jsonls = {},
 			tailwindcss = {},
+			docker_language_server = {},
 
 			nil_ls = {},
 			terraformls = {},
+			bashls = {},
 			yamlls = {
-				filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
+				filetypes = { "yaml", "yaml.gitlab", "yaml.helm-values" },
 				settings = {
 					yaml = {
 						customTags = {
@@ -71,6 +74,8 @@ return {
 					},
 				},
 			},
+			taplo = {},
+			marksman = {},
 
 			lua_ls = {
 				settings = {
@@ -85,12 +90,8 @@ return {
 					},
 				},
 			},
-			svls = {
-
-			},
-			verible = {
-
-			}
+			svls = {},
+			verible = {},
 		}
 
 		for name, config in pairs(lsps) do
