@@ -53,7 +53,7 @@ return {
 			},
 			ty = {},
 
-			ts_ls = {},
+			tsgo = {},
 			html = {},
 			cssls = {},
 			eslint = {},

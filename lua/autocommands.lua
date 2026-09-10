@@ -1,3 +1,15 @@
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Use two-space indentation for JavaScript and TypeScript",
+    group = vim.api.nvim_create_augroup("javascript-typescript-indent", { clear = true }),
+    pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    callback = function(event)
+        vim.bo[event.buf].expandtab = true
+        vim.bo[event.buf].tabstop = 2
+        vim.bo[event.buf].softtabstop = 2
+        vim.bo[event.buf].shiftwidth = 2
+    end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
     group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
