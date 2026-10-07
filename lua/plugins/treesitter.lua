@@ -7,7 +7,7 @@ return {
         require("nvim-treesitter").setup({
             install_dir = vim.fn.stdpath("data") .. "/site",
         })
-        require("nvim-treesitter").install({ "go", "terraform", "hcl", "tsx", "c", "lua" })
+        require("nvim-treesitter").install({ "python", "go", "terraform", "hcl", "tsx", "c", "lua" })
 
 
         vim.api.nvim_create_autocmd("FileType", {

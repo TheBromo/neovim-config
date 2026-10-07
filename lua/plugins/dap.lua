@@ -81,11 +81,13 @@ return {
 		"https://github.com/rcarriga/nvim-dap-ui",
 		"https://github.com/nvim-neotest/nvim-nio",
 		"https://github.com/leoluz/nvim-dap-go",
+		"https://github.com/mfussenegger/nvim-dap-python",
 	},
 	setup = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
 		require("dap-go").setup()
+		require("plugins.python_debug").setup()
 
 
 		dapui.setup({
@@ -138,7 +140,11 @@ return {
 		vim.keymap.set("n", "<leader>Dp", dap.pause, { desc = "[D]ebug [P]ause" })
 		vim.keymap.set("n", "<leader>Dr", dap.repl.open, { desc = "[D]ebug [R]EPL" })
 		vim.keymap.set("n", "<leader>Dl", dap.run_last, { desc = "[D]ebug run [L]ast" })
-		vim.keymap.set("n", "<leader>Dt", dap.terminate, { desc = "[D]ebug [T]erminate" })
+		vim.keymap.set("n", "<leader>Dt", function()
+			if not require("plugins.chipmind_make_debug").stop() then dap.terminate() end
+		end, { desc = "[D]ebug [T]erminate" })
+		vim.keymap.set({ "n", "v" }, "<leader>De", function() dapui.eval() end,
+			{ desc = "[D]ebug [E]valuate expression" })
 		vim.keymap.set("n", "<leader>Du", dapui.toggle, { desc = "[D]ebug toggle [U]I" })
 
 

@@ -53,7 +53,22 @@ return {
 			},
 			ty = {},
 
-			tsgo = {},
+			-- TypeScript 7 (Go port) ships the language server as `tsc --lsp`.
+			-- lspconfig defaults to a `tsgo` binary, which only exists in
+			-- @typescript/native-preview. Prefer a project-local tsgo, else
+			-- fall back to the global TypeScript 7 `tsc` from nix.
+			tsgo = {
+				cmd = function(dispatchers, config)
+					local cmd = "tsc"
+					if (config or {}).root_dir then
+						local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin/tsgo")
+						if vim.fn.executable(local_cmd) == 1 then
+							cmd = local_cmd
+						end
+					end
+					return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
+				end,
+			},
 			html = {},
 			cssls = {},
 			eslint = {},
