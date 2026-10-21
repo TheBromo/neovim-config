@@ -16,6 +16,8 @@ M.themes = {
 	"catppuccin",
 	"tokyonight",
 	"cyberdream",
+	"cyberdream-kovalenko",
+	"cyberdream-kovalenko-dark",
 	"brightburn",
 	"kanagawa",
 	"light",

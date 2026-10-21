@@ -1,6 +1,8 @@
 return {
 	specs = { "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	setup = function()
+		-- Some themes do not define this legacy scope highlight.
+		vim.api.nvim_set_hl(0, "IndentBlanklineChar", { default = true, link = "Comment" })
 		require("ibl").setup({
 			indent = {
 				highlight = {

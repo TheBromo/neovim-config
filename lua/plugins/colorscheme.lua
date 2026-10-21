@@ -136,9 +136,6 @@ local themes = {
 	["cyberdream"] = {
 		spec = "https://github.com/scottmckendry/cyberdream.nvim",
 		setup = function()
-			-- Compensate for the terminal renderer lifting this to roughly #1d1e20.
-			local context_bg = "#17191b"
-
 			require("cyberdream").setup({
 				transparent = true,
 				borderless_pickers = false,
@@ -154,6 +151,11 @@ local themes = {
 			})
 
 			vim.cmd("colorscheme cyberdream")
+		end,
+		highlights = function()
+			-- Compensate for the terminal renderer lifting this to roughly #1d1e20.
+			local context_bg = "#17191b"
+
 			vim.api.nvim_set_hl(0, "Cursor", { bg = "#c1c0c0", fg = "#8e8d8d" })
 			vim.api.nvim_set_hl(0, "CursorLine", { bg = context_bg })
 			vim.api.nvim_set_hl(0, "Visual", { bg = "#5b595c", fg = "#fcfcfa" })
@@ -165,6 +167,43 @@ local themes = {
 			vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = context_bg })
 			vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = context_bg, underline = true })
 			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#fcfcfa" })
+		end,
+	},
+	["cyberdream-kovalenko"] = {
+		spec = "https://github.com/scottmckendry/cyberdream.nvim",
+		setup = function()
+			-- Kovalenko's default dark palette, retaining the terminal background.
+			require("cyberdream").setup({
+				variant = "default",
+				transparent = true,
+				borderless_pickers = false,
+				saturation = 1,
+				cache = false,
+				colors = {
+					bg = "#080808",
+				},
+			})
+
+			vim.cmd("colorscheme cyberdream")
+		end,
+	},
+	["cyberdream-kovalenko-dark"] = {
+		spec = "https://github.com/scottmckendry/cyberdream.nvim",
+		setup = function()
+			-- Keep transparent.nvim from clearing this variant's solid background.
+			vim.g.transparent_enabled = false
+			require("cyberdream").setup({
+				variant = "default",
+				transparent = false,
+				borderless_pickers = false,
+				saturation = 1,
+				cache = false,
+				colors = {
+					bg = "#16181a",
+				},
+			})
+
+			vim.cmd("colorscheme cyberdream")
 		end,
 	},
 	["light"] = {
@@ -221,13 +260,9 @@ return {
 			transparent.setup({})
 		end
 
-		-- Ghostty does not support terminal-native multicursors, so make
-		-- Neovim's static fallback cursors clearly visible across themes.
-		vim.api.nvim_set_hl(0, "MCursor", {
-			bg = "#ffbd5e",
-			fg = "#080808",
-			bold = true,
-		})
-		vim.api.nvim_set_hl(0, "MCursorVisual", { link = "Visual" })
+		require("theme_highlights").apply()
+		if selected.highlights then
+			selected.highlights()
+		end
 	end,
 }
