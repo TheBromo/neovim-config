@@ -25,7 +25,7 @@ local plugin_modules = {
 }
 
 -- INFO:
--- update lua vim.pack.update()
+-- update :packupdate
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind, path = ev.data.spec.name, ev.data.kind, ev.data.path
